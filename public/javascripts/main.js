@@ -13,8 +13,8 @@ app.config(function($routeProvider, $locationProvider) {
         })
 
         .when('/partnersignup', {
-          templateUrl: 'partials/partnerSignup.html',
-          controller: 'partnerSignupController'
+            templateUrl: 'partials/partnerSignup.html',
+            controller: 'partnerSignupController'
         })
 
         .when('/loginerror', {
@@ -23,8 +23,8 @@ app.config(function($routeProvider, $locationProvider) {
         })
 
         .when('/login', {
-          templateUrl: 'partials/login.html',
-          controller: 'loginController'
+            templateUrl: 'partials/login.html',
+            controller: 'loginController'
         })
 
         .when('/table', {
@@ -41,5 +41,6 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'partials/loggedInReferralConfirm.html',
             controller: 'loggedInReferralConfirmController'
         })
+        .when('/');
 
 });
