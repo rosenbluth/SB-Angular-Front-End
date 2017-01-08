@@ -4,70 +4,36 @@ app.controller('homeController', ['$scope', '$http', '$location', function($scop
     $scope.view.booyah = 'booyah from home controller';
 
     $scope.view.newReferral = {};
-    $scope.view.newReferral.leadName
-    $scope.view.newReferral.leadCompanyName
-    $scope.view.newReferral.leadEmail
-    $scope.view.newReferral.leadPhone
-    $scope.view.newReferral.referrerEmail
-    $scope.view.newReferral.resultedInConversion
+    $scope.view.newReferral.resultedInConversion = false;
+    $scope.view.newReferral.totalAmountPaidForReferral = 0;
+    $scope.view.newReferral.totalMoneyYearlyStarter = 598.8;
+    $scope.view.newReferral.totalMoneyYearlyGrowth = 1198.80
+    $scope.view.newReferral.numMonthsPassedConverted = 0;
+    $scope.view.newReferral.totalNumOfQuarterlyPayouts = 0;
+    $scope.view.newReferral.activeReferral = true;
+
 
     $scope.view.submitReferralClicked = function(event){
         event.preventDefault();
+        $scope.view.newReferral.conversionDate = new Date();
         console.log('submitReferralClicked running');
-    }
+        console.log($scope.view.newReferral, '($scope.view.newReferral,')
 
 
-
-    $scope.goToConfirm = function(event, gameInfo){
-            event.preventDefault();
-            console.log(gameInfo, 'gameInfo');
-            $http.get('/users/'+ $scope.currentUser.id +'/games/'+ gameInfo.gameId).then(function(response){
-                console.log(response.data, 'Dot then function inside goToConfirm inside joinGameController');
-                // currentGame.setWholeGame(response.data.name);
-                $window.localStorage.setItem('game', response.data.name);
-                $window.localStorage.setItem('gameId', response.data.game_id);
-                $window.localStorage.setItem('gameStats', JSON.stringify(response.data.game_stats));
-                $window.localStorage.setItem('startTime', response.data.start_time);
-                $window.localStorage.setItem('gameType', response.data.game_type);
-                $location.path('/confirmjoin')
-            })
-        }
+        $http.post('http://localhost:9090/referral/form', $scope.view.newReferral).then(function(response){
+            console.log(response, '***response*** from server');
+        }, function(err){
+            console.log(err, 'error from server');
+        })
+    };
 
 
+    $scope.view.skipToLogin = function(event){
+        event.preventDefault();
+        console.log('skipToLogin clicked');
+        $location.path('/login')
+    };
 
-
-
-
-
-
-    // $http({
-    //     method: 'GET',
-    //     url: 'http://localhost:9090/partners'
-    // }).then(function successCallback(response) {
-    //     console.log(response.data);
-    // }, function errorCallback(response) {
-    //     // called asynchronously if an error occurs
-    //     // or server returns response with an error status.
-    // });
-    //
-    // $http({
-    //     method: 'GET',
-    //     url: 'http://localhost:9090/partners'
-    // }).then(function successCallback(response) {
-    //     console.log(response.data);
-    // }, function errorCallback(response) {
-    //     // called asynchronously if an error occurs
-    //     // or server returns response with an error status.
-    // });
-    //
-    // $http({
-    //     method: 'GET',
-    //     url: 'http://localhost:9090/partners'
-    // }).then(function successCallback(response) {
-    //     console.log(response.data);
-    // }, function errorCallback(response) {
-    //     // called asynchronously if an error occurs
-    //     // or server returns response with an error status.
-    // });
+console.log($scope.view.newReferral);
 
 }]);
