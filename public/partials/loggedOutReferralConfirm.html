@@ -1,7 +1,8 @@
-<p>{{view.booyah}}</p>
-<p>BOOYAH from logged out referral confirmation controller</p>
+<!-- <p>{{view.booyah}}</p>
+<p>BOOYAH from logged out referral confirmation controller</p> -->
 
-
+<ng-include src="'partials/loader.html'"></ng-include>
+<ng-include src="'partials/header.html'"></ng-include>
         <!-- sign up card-->
 
         <div>
@@ -23,17 +24,18 @@
               </div>
              </div>
              <div class="right">
-             <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Register
+             <button ng-click=view.registerClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Register
              </div>
              </button>
              <div class="right">
-             <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Close
+             <button ng-click=view.closeClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Close
              </div>
              <div class="right">
-             <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Log In
+             <button ng-click=view.loginClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Log In
              </div>
              </button>
             </div>
           </div>
         </div>
         </div>
+<ng-include src="'partials/footer.html'"></ng-include>

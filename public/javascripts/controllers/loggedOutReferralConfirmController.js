@@ -12,8 +12,15 @@ app.controller('loggedOutReferralConfirmController', ['$scope', '$http', '$locat
 
     $scope.view.loginClicked = function(event){
         event.preventDefault();
-        console.log('loginClicked clicked');
+        console.log('loginClicked running');
         $location.path('/login')
+    };
+
+
+    $scope.view.registerClicked = function(event){
+        event.preventDefault();
+        console.log('registerClicked running');
+        $location.path('/partnersignup')
     };
 
 }]);
