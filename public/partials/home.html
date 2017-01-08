@@ -1,6 +1,7 @@
 <!-- <p>{{view.booyah}}</p>
 <p>BOOYAH from home controller</p> -->
-
+<ng-include src="'partials/loader.html'"></ng-include>
+<ng-include src="'partials/header.html'"></ng-include>
 
 <div class="myContainer">
 
@@ -30,7 +31,6 @@
 
                     <!-- <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' > -->
                         <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' >
-
                         <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" />
                         <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" />
                         <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" />

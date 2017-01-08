@@ -41,6 +41,4 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'partials/loggedInReferralConfirm.html',
             controller: 'loggedInReferralConfirmController'
         })
-        .when('/');
-
 });
