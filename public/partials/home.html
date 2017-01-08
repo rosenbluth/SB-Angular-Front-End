@@ -1,2 +1,50 @@
-<p>{{view.booyah}}</p>
-<p>BOOYAH from home controller</p>
+<!-- <p>{{view.booyah}}</p>
+<p>BOOYAH from home controller</p> -->
+
+
+<div class="myContainer">
+
+    <h1 class="center">Sandbox Referrals Program</h1>
+
+  <div class='center'>
+    <img src="https://files.slack.com/files-tmb/T0DS38JTE-F3MHA7FUY-a958963bc5/people-office-group-team_1024.jpg" alt="" >
+  </div>
+
+
+    <h1 class="center">Sandbox Referrals Program</h1>
+    <button ng-click=view.skipToLogin($event) class="submitBtn btn waves-effect waves-light center">View My Referrals</button>
+
+    <h3 class="center">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat</h3>
+    <p class="center">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
+        voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius
+        modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+    <!-- the form card -->
+
+
+
+
+    <div class="col s12 m5 l8">
+        <div class="card">
+            <div class="input-field">
+                <div class="card-content">
+
+                    <!-- <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' > -->
+                        <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' >
+
+                        <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" />
+                        <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" />
+                        <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" />
+                        <input ng-model="view.newReferral.leadPhone" placeholder="Referral's Phone" type="text" />
+                        <input ng-model="view.newReferral.referrerEmail" placeholder="Your E-mail Address" type="text" />
+                        <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Submit</button>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
