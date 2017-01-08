@@ -30,7 +30,7 @@
                 <div class="card-content">
 
                     <!-- <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' > -->
-                        <form ng-submit="view.submitReferralClicked($event)" action="#" name ='form' >
+                        <form ng-submit="view.submitReferralClicked($event)" name ='form' >
                         <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" />
                         <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" />
                         <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" />
@@ -40,11 +40,10 @@
 
                     </form>
 
-
-
                 </div>
             </div>
         </div>
     </div>
 
 </div>
+<ng-include src="'partials/footer.html'"></ng-include>
