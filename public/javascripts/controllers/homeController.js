@@ -1,7 +1,7 @@
-app.controller('myController', ['$scope', '$http', function($scope, $http) {
+app.controller('homeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
     $scope.view = {};
-    $scope.view.booyah = 'booyah x 100';
+    $scope.view.booyah = 'booyah from home controller';
 
     $http({
         method: 'GET',
