@@ -1,8 +1,57 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.myContainer {
+  display: flex;
+
 }
 
-a {
-  color: #00B7FF;
+.cardContent{
+
+  position: absolute;
+  justify-content: center;
+}
+.row {
+    padding-top: 300px;
+    justify-content: center;
+    display: flex;
+}
+
+.box {
+    padding-top: 100px;
+    flex-grow: 7;
+    background: linear-gradient( 0deg, #fff, #ccffff 40%, #b3e6ff);
+}
+
+/*desktop style*/
+.submitBtn{
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  order: 99;
+}
+
+
+.center{
+  position: absolute;
+  justify-content: center;
+}
+.card {
+  position: relative;
+  overflow: hidden;
+  margin: 0.5rem 0 1rem 0;
+  background-color: #fff;
+  border-radius: 2px;
+  padding: 2rem;
+  top: 3rem;
+  left: 16rem;
+  margin: auto;
+}
+
+button:focus {
+  outline: none;
+  background-color: #f9a34c;
+}
+
+/*moblie style*/
+@media(max-width: 600px){
+
 }
