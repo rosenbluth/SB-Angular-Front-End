@@ -28,7 +28,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
 
         .when('/table', {
-            templateUrl: 'partials/table.html',
+            templateUrl: 'partials/historyTable.html',
             controller: 'tableController'
         })
 
@@ -40,5 +40,5 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/referralconfirm', {
             templateUrl: 'partials/loggedInReferralConfirm.html',
             controller: 'loggedInReferralConfirmController'
-        })
+        });
 });

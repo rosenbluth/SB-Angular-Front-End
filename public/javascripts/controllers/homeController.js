@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 app.controller('homeController', ['$scope', '$http', '$location', 'Partner', function($scope, $http, $location, Partner) {
+=======
+app.controller('homeController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
+>>>>>>> 954608b0bbce720a01f22a57da33dcad602b24ff
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from home controller';

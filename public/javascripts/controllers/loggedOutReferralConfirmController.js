@@ -23,4 +23,5 @@ app.controller('loggedOutReferralConfirmController', ['$scope', '$http', '$locat
         $location.path('/partnersignup')
     };
 
+
 }]);
