@@ -1,2 +1,27 @@
-<p>{{view.booyah}}</p>
-<p>BOOYAH from partner signup controller</p>
+<!-- <p>{{view.booyah}}</p>
+<p>BOOYAH from partner signup controller</p> -->
+
+<div sclass = 'myContainer'>
+<form class = 'center' action="">
+    <input ng-model="view.newPartner.firstName" type="text" placeholder="First Name">
+    <input ng-model="view.newPartner.lastName" type="text" placeholder="Last Name">
+    <input ng-model="view.newPartner.phone" type="text" placeholder="Phone">
+
+
+    <input ng-model="view.newPartner.company" type="text" placeholder="Company">
+    <input ng-model="view.newPartner.email"type="text" placeholder="Email">
+
+    <input ng-model="view.newPartner.password" type="text" placeholder="Password">
+
+    <h4 for="singleSelect"> Select your payment platform: </h4>
+    <select style="color:black" ng-model="view.newPartner.platform">
+      <option value="Venmo">Venmo</option>
+      <option value="Stripe">Stripe</option>
+    </select>
+
+
+    <input type="text" placeholder="Payment platform email">
+    <button ng-click=view.submitClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Submit</button>
+
+</form>
+</div>
