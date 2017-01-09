@@ -17,6 +17,7 @@
     "flash": "^1.1.0",
     "method-override": "^2.3.6",
     "mocha": "^3.1.0",
+    "mongoose": "^4.7.6",
     "morgan": "^1.7.0",
     "nodemon": "^1.11.0",
     "pg": "^6.1.0",

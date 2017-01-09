@@ -9,6 +9,9 @@ const cookieSession = require('cookie-session')
 
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const db = require('./config/db.js')
+
+// mongoose.connect(db.url);
 
 app.use(bodyParser.urlencoded({
     extended: false
