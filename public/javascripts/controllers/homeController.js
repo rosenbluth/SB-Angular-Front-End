@@ -1,4 +1,4 @@
-app.controller('homeController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('homeController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from home controller';
