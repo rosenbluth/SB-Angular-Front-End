@@ -1,27 +1,28 @@
 <!-- <p>{{view.booyah}}</p>
 <p>BOOYAH from partner signup controller</p> -->
 
-<div sclass = 'myContainer'>
-<form class = 'center' action="">
-    <input ng-model="view.newPartner.firstName" type="text" placeholder="First Name">
-    <input ng-model="view.newPartner.lastName" type="text" placeholder="Last Name">
-    <input ng-model="view.newPartner.phone" type="text" placeholder="Phone">
+<div class="myContainer">
+<div class="row">
+    <div class="col s12 m8 l8">
+      <div class="card">
+            <div class="input-field">
+                <div class="cardContent">
 
+                    <form ng-submit="view.submitReferralClicked($event)" name ='form' >
+                        <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" />
+                        <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" />
+                        <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" />
+                        <input ng-model="view.newReferral.leadPhone" placeholder="Referral's Phone" type="text" />
+                        <input ng-model="view.newReferral.referrerEmail" placeholder="Your E-mail Address" type="text" />
+                        <div class ="cardContentButtons">
+                        <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                      </div>
 
-    <input ng-model="view.newPartner.company" type="text" placeholder="Company">
-    <input ng-model="view.newPartner.email"type="text" placeholder="Email">
+                    </form>
 
-    <input ng-model="view.newPartner.password" type="text" placeholder="Password">
-
-    <h4 for="singleSelect"> Select your payment platform: </h4>
-    <select style="color:black" ng-model="view.newPartner.platform">
-      <option value="Venmo">Venmo</option>
-      <option value="Stripe">Stripe</option>
-    </select>
-
-
-    <input type="text" placeholder="Payment platform email">
-    <button ng-click=view.submitClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Submit</button>
-
-</form>
+                  </div>
+              </div>
+            </div>
+      </div>
+</div>
 </div>

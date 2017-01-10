@@ -4,14 +4,20 @@
 }
 
 .cardContent{
-
-  position: absolute;
-  justify-content: center;
+  display: flex;
+  position:relative;
+  justify-content:center;
 }
-.row {
-    padding-top: 300px;
-    justify-content: center;
-    display: flex;
+
+.cardContentButtons{
+  display: flex;
+  position:relative;
+  justify-content:flex-end;
+
+}
+.rightSide {
+  display: flex;
+  justify-content:center;
 }
 
 .box {
@@ -30,21 +36,23 @@
 }
 
 
-.center{
+.center {
+  display: flex;
   position: absolute;
   justify-content: center;
 }
-.card {
-  position: relative;
-  overflow: hidden;
-  margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
+
+.card{
+  display: flex;
   border-radius: 2px;
   padding: 2rem;
   top: 3rem;
-  left: 16rem;
-  margin: auto;
 }
+
+.striped>tbody>tr:nth-child(odd)>td,
+.striped>tbody>tr:nth-child(odd)>th {
+   background-color: #e0e0e0; // Choose your own color here
+ }
 
 button:focus {
   outline: none;
