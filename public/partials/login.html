@@ -2,8 +2,11 @@
 
 
 
-<form action="">
-    <input ng-model="view.loginInfo.email" type="text" placeholder="email">
-    <input ng-model="view.loginInfo.password" type="text" placeholder="password">
+<form action="" name="loginForm"  ng-submit="loginForm.$valid && view.loginClicked($event)">
+    <input ng-model="view.loginInfo.email" name="email"
+ type="text" placeholder="email" required>
+    <input ng-model="view.loginInfo.password"  name="password"
+type="text" placeholder="password" required>
+    <button type='submit'></button>
 </form>
 <ng-include src="'partials/footer.html'"></ng-include>
