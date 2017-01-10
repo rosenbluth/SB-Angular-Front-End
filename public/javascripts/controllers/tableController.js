@@ -2,7 +2,7 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window',  f
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
-
+    $scope.currentUser={};
 
     // ********** sample partner route to reference: *************
         // ********** gets all partners stored in DB **********
@@ -18,18 +18,21 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window',  f
             // or server returns response with an error status.
         })
     )
-    $scope.currentGame.name = $window.localStorage.getItem('game');
-    console.log($scope.currentUserEmail, 'currentUserEmail');
+    $scope.currentUser.email = $window.localStorage.getItem('email');
+    console.log($scope.currentUser.email, 'currentUserEmail');
 
     // ********** gets info for partner of email 0@0.com (hard-coded) and 0@0.com's referrals too **********
-    $http.get('/api/partners/' + $scope.currentUserEmail).then(function successCallback(response) {
-        console.log("0@0.com's partner and referral data", response.data);
-    }, function errorCallback(error) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
-        console.log(error);
-    })
+    // $http.get('/api/partners/' + $scope.currentUserEmail).then(function successCallback(response) {
+    //     console.log("0@0.com's partner and referral data", response.data);
+    // }, function errorCallback(error) {
+    //     // called asynchronously if an error occurs
+    //     // or server returns response with an error status.
+    //     console.log(error);
+    // })
 
+    $http.get('/api/partners/' +$scope.currentUser.email + '/referrals').then(function(response){
+        console.log(response, 'response');
+    })
 
 
 }]);

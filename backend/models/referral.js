@@ -1,6 +1,9 @@
 var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const PartnerSchema = require('./referral');
 
-module.exports = mongoose.model('EditorUser', {
+
+var ReferralSchema = new Schema({
 
     timeStamp: {
         type: Date,
@@ -74,3 +77,4 @@ module.exports = mongoose.model('EditorUser', {
     }
 
 });
+module.exports = ReferralSchema;

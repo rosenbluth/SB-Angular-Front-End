@@ -12,10 +12,27 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 
 
-const db = require('./config/db.js')
+const dbase = require('./config/db.js')
+console.log(dbase);
 
 mongoose.Promise = Promise;
-mongoose.connect(db.url);
+// mongoose.connect(db.url);
+
+
+
+
+// Connection URL
+var url = dbase.url;
+// Use connect method to connect to the Server
+mongoose.connect(url);
+
+mongoose.connection.once('open', () =>{
+    console.log('working, yo');
+})
+
+
+
+
 
 app.use(bodyParser.urlencoded({
     extended: false
