@@ -1,17 +1,17 @@
 .myContainer {
-  display: flex;
-
-}
-
-.cardContent{
-
-  position: absolute;
-  justify-content: center;
-}
-.row {
-    padding-top: 300px;
-    justify-content: center;
     display: flex;
+}
+
+.cardContent {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.cardContentButtons {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
 }
 
 .box {
@@ -20,21 +20,30 @@
     background: linear-gradient( 0deg, #fff, #ccffff 40%, #b3e6ff);
 }
 
+
 /*desktop style*/
-.submitBtn{
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  order: 99;
+
+.submitBtn {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    order: 99;
+}
+
+.center {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+}
+
+.topCenter {
+    display: flex;
+    justify-content: center;
 }
 
 
-.center{
-  position: absolute;
-  justify-content: center;
-}
-.card {
+/*.card {
   position: relative;
   overflow: hidden;
   margin: 0.5rem 0 1rem 0;
@@ -42,16 +51,28 @@
   border-radius: 2px;
   padding: 2rem;
   top: 3rem;
-  left: 16rem;
   margin: auto;
+}*/
+
+.card {
+    display: flex;
+    border-radius: 2px;
+    padding: 2rem;
+    top: 3rem;
 }
 
 button:focus {
-  outline: none;
-  background-color: #f9a34c;
+    outline: none;
+    background-color: #f9a34c;
 }
+
 
 /*moblie style*/
-@media(max-width: 600px){
 
-}
+@media(max-width: 600px) {}
+
+x) {}
+
+x) {}
+
+) {}
