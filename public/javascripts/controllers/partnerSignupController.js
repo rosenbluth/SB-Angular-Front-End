@@ -4,9 +4,7 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
     $scope.view.booyah = 'booyah from partner signup controller';
 
     $scope.view.newPartner = {};
-    $scope.view.newPartner.hasLinkedStripe = true;
 
-    $scope.view.platforms = ["Venmo", "Stripe"];
     $scope.view.submitClicked = function(event) {
         event.preventDefault();
         console.log($scope.view.newPartner, 'scope.view.newPartner');
@@ -16,13 +14,6 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
             $location.path('/table')
         })
     }
-
-
-
-
-
-
-
 
 
 }]);

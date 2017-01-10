@@ -59,6 +59,7 @@
     border-radius: 2px;
     padding: 2rem;
     top: 3rem;
+    justify-content: center;
 }
 
 button:focus {
