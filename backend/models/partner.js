@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 
+
 module.exports = mongoose.model('Partner', {
 
     email: {
@@ -22,7 +23,6 @@ module.exports = mongoose.model('Partner', {
     },
     hashed_password: {
         type: String,
-        validate: [validatePresenceOf, 'Password cannot be blank']
     },
     salt: String,
     chosenOptions: {

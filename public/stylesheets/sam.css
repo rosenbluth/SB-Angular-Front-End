@@ -1,7 +1,10 @@
-.myContainer {
-  display: flex;
-
+body{
+    font-family: roboto
 }
+.myContainer {
+    display: flex;
+}
+
 
 .cardContent{
   display: flex;
@@ -20,46 +23,180 @@
   justify-content:center;
 }
 
-.box {
-    padding-top: 100px;
-    flex-grow: 7;
-    background: linear-gradient( 0deg, #fff, #ccffff 40%, #b3e6ff);
-}
-
 /*desktop style*/
-.submitBtn{
-  display: flex;
-  align-self: flex-end;
-  flex-direction: column-reverse;
-  justify-content: flex-end;
-  order: 99;
-}
 
+.submitBtn {
+    display: flex;
+    align-self: flex-end;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    order: 99;
+}
 
 .center {
-  display: flex;
-  position: absolute;
-  justify-content: center;
+    display: flex;
+    position: absolute;
+    justify-content: center;
 }
 
-.card{
-  display: flex;
-  border-radius: 2px;
-  padding: 2rem;
-  top: 3rem;
+.topCenter {
+    display: flex;
+    justify-content: center;
 }
+
+.card {
+    display: flex;
+    border-radius: 2px;
+    padding: 2rem;
+    top: 3rem;
+    justify-content: center;
+}
+
+
 
 .striped>tbody>tr:nth-child(odd)>td,
 .striped>tbody>tr:nth-child(odd)>th {
    background-color: #e0e0e0; // Choose your own color here
  }
 
+
 button:focus {
-  outline: none;
-  background-color: #f9a34c;
+    outline: none;
+    background-color: #f9a34c;
 }
+
 
 /*moblie style*/
+
+@media(max-width: 600px) {}
+
+x) {}
+
+x) {}
+
+) {}
+/*moblie style*/
 @media(max-width: 600px){
+}
+
+
+
+
+
+/*--------------menu---------------*/
+/* Remove margins and padding from the list, and add a black background color */
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: white;
+}
+
+/* Float the list items side by side */
+ul.topnav span:not(:first-child){float: right;
 
 }
+
+/* Style the links inside the list items */
+ul.topnav span :first-child {
+    display: inline;
+    color: #333;
+    text-align: center;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+}
+ul.topnav span a {
+    display: inline;
+    padding: 20px 30px 20px 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+
+
+}
+ul.topnav span img {
+    display: inline;
+    padding: 30px 30px 30px 30px;
+    margin-right: 30px;
+    margin-top: 10px;
+
+}
+ul.topnav span a {
+    display: inline;
+    color: #333;
+    text-align: center;
+    padding: 30px 30px 30px 30px;
+    margin-right: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    top: 20px;
+
+}
+
+.margin-bottom{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Change background color of links on hover */
+.hover-orange :hover {
+    background-color:  #f9a34c ;
+    color: #555}
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+ul.topnav span.icon {display: none;}
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+@media screen and (max-width:680px) {
+  ul.topnav span:not(:first-child) {display: none;}
+  ul.topnav span.icon {
+    float: right;
+    display: flex;
+  }
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+@media screen and (max-width:680px) {
+  ul.topnav.responsive {position: absolute;;}
+  ul.topnav.responsive span.icon {
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+  ul.topnav.responsive span {
+    float: none;
+    display: inline;
+  }
+  ul.topnav.responsive span a {
+    display: block;
+    text-align: left;
+  }
+  ul.topnav span :first-child {
+      display: inline;
+      color: #333;
+      text-align: center;
+      /*padding: 20px 20px 20px;
+      margin-left: 0px;
+      margin-top: 10px;
+      margin-right: 30px;*/
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 17px;
+  }
+}
+/*#no-move{
+    position: fixed;
+    top: 0;
+    right: 0;
+}*/
+.will-center img{
+    /*border: 1px solid red;*/
+    position: fixed;top: 0; left: 0;
+}
+
+#img-height{
+    height: 15vh;
+}
+/*--------------end menu---------------*/

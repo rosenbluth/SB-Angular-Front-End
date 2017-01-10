@@ -1,4 +1,5 @@
-app.controller('homeController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
+app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$window', function($scope, $http, $location, Partner, $window) {
+
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from home controller';
@@ -13,26 +14,36 @@ app.controller('homeController', ['$scope', '$http', '$location', '$window', fun
     $scope.view.newReferral.activeReferral = true;
 
 
-    $scope.view.submitReferralClicked = function(event){
+    $scope.view.submitReferralClicked = function(event) {
         event.preventDefault();
         $scope.view.newReferral.conversionDate = new Date();
         console.log('submitReferralClicked running');
         console.log($scope.view.newReferral, '($scope.view.newReferral,')
-        $http.post('http://localhost:9090/referral/form', $scope.view.newReferral).then(function(){
+        $http.post('http://localhost:9090/referral/form', $scope.view.newReferral).then(function() {
             console.log('no ***response*** from server');
             $location.path('/confirmation')
-        }, function(err){
+        }, function(err) {
             console.log(err, 'error from server');
         })
     };
 
 
-    $scope.view.skipToLogin = function(event){
+    $scope.view.skipToLogin = function(event) {
         event.preventDefault();
         console.log('skipToLogin clicked');
         $location.path('/login')
     };
 
-console.log($scope.view.newReferral);
+    $scope.partners = {};
+
+    $scope.sampleData = function() {
+        Partner.get().then(function(partners) {
+            console.log(partners);
+            $scope.partners = partners;
+            console.log(partners);
+        })
+    }
+
+    console.log($scope.view.newReferral);
 
 }]);
