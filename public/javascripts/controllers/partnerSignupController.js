@@ -5,13 +5,17 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
 
     $scope.view.newPartner = {};
 
-    $scope.view.submitClicked = function(event) {
+    $scope.view.platforms = ["Venmo", "Stripe"];
+
+
+    $scope.view.submitClicked = function(event){
         event.preventDefault();
         console.log($scope.view.newPartner, 'scope.view.newPartner');
         $window.localStorage.setItem('email', $scope.view.newPartner.email);
-        $http.post('http://localhost:9090/partners', $scope.view.newPartner).then(function() {
+        $http.post('http://localhost:9090/editor/searchUsers',$scope.view.newPartner)
+        .then(function(){
             console.log('post route working');
-            $location.path('/table')
+            // $location.path('/table')
         })
     }
 

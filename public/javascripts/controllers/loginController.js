@@ -8,15 +8,19 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
 
     $scope.view.loginClicked = function(event){
         event.preventDefault();
-        console.log($scope.view.loginInfo);
+        // console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
-        $http.post('http://localhost:9090/partners/login', $scope.view.loginInfo)
+        $http.post('http://localhost:9090/editor/searchUsers', $scope.view.loginInfo)
         .then(function(response){
-            console.log('post route working');
+            // console.log('post route working');
             console.log( response, 'response');
-            // $location.path('/table')
+            // $location.path('/table')g
+        }).catch(function(err){
+            console.log(error, 'error');
         })
     }
+
+
 
 
 }]);
