@@ -1,4 +1,4 @@
-app.controller('tableController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('tableController', ['$scope', '$http', '$location', '$window',  function($scope, $http, $location, $window) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
@@ -18,19 +18,18 @@ app.controller('tableController', ['$scope', '$http', '$location', function($sco
             // or server returns response with an error status.
         })
     )
+    $scope.currentGame.name = $window.localStorage.getItem('game');
+    console.log($scope.currentUserEmail, 'currentUserEmail');
 
     // ********** gets info for partner of email 0@0.com (hard-coded) and 0@0.com's referrals too **********
-    console.log($http({
-        method: 'GET',
-        url: 'http://localhost:9090/partners/0@0.com'
-    }).then(function successCallback(response) {
+    $http.get('/api/partners/' + $scope.currentUserEmail).then(function successCallback(response) {
         console.log("0@0.com's partner and referral data", response.data);
     }, function errorCallback(error) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
         console.log(error);
     })
-)
+
 
 
 }]);
