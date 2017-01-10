@@ -1,9 +1,33 @@
-<ng-include src="'partials/header.html'"></ng-include>
+<ng-include src="'partials/test.html'"></ng-include>
+
+<div class="myContainer">
+    <div class="row">
+        <div class="card">
+            <div class="col s12 offset-m2 offset-l2">
+                <div class="input-field">
+                    <div class="cardContent">
+                        <form name='form'>
+                            <div class="topCenter">
+                                <img src="images/stacked.png" alt="">
+                            </div>
+                            <input ng-model="view.loginInfo.email" type="text" placeholder="email" id="textarea1">
+                            <input ng-model="view.loginInfo.password" type="text" placeholder="password" id="textarea1">
+
+                            <div class="row">
+                                <div class="loginButtons">
+                                    <div class="closeButtonLogin">
+                                        <button class="submitBtn btn waves-effect waves-light wButton" type="" name="">Close</button>
+
+                                    </div>
+                                    <button class="submitBtn btn waves-effect waves-light sbButton" type="submit" name="action">Login</button>
+                                </div>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-
-<form action="">
-    <input ng-model="view.loginInfo.email" type="text" placeholder="email">
-    <input ng-model="view.loginInfo.password" type="text" placeholder="password">
-</form>
-<ng-include src="'partials/footer.html'"></ng-include>
+    <!-- <ng-include src="'partials/footer.html'"></ng-include> -->

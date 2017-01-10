@@ -1,27 +1,53 @@
-body{
+body {
     font-family: roboto
 }
+
 .myContainer {
     display: flex;
 }
 
-
-.cardContent{
-  display: flex;
-  position:relative;
-  justify-content:center;
+.spaceAround {
+    display: flex;
+    justify-content: space-around;
 }
 
-.cardContentButtons{
-  display: flex;
-  position:relative;
-  justify-content:flex-end;
-
+.spaceBetween {
+    display: flex;
+    justify-content: space-between;
 }
+
+.cardContent {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.cardContentButtons {
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+}
+
+.loginButtons {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.closeButtonLogin {
+    padding-right: 10px;
+}
+
 .rightSide {
-  display: flex;
-  justify-content:center;
+    display: flex;
+    justify-content: center;
 }
+
+.marginTop {
+    display: flex;
+    margin-top: 50px;
+}
+
 
 /*desktop style*/
 
@@ -52,17 +78,47 @@ body{
     justify-content: center;
 }
 
-
-
-.striped>tbody>tr:nth-child(odd)>td,
-.striped>tbody>tr:nth-child(odd)>th {
-   background-color: #e0e0e0; // Choose your own color here
- }
-
+.striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
+    background-color: #e0e0e0; // Choose your own color here
+}
 
 button:focus {
     outline: none;
     background-color: #f9a34c;
+}
+
+.sbButton {
+    background-color: #f9a34c;
+}
+
+.sbButton:focus {
+    background-color: #f9a34c;
+}
+
+.sbButton:hover {
+    background-color: #f9a34c;
+}
+
+.wButton {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.wButton:focus {
+    background-color: #f9a34c;
+}
+
+.wButton:hover {
+    background-color: #f9a34c;
+}
+
+#textarea1:focus {
+    border-bottom: 1px solid #f9a34c;
+    box-shadow: 0 1px 0 0 #f9a34c;
+}
+
+#textarea1:focus+label {
+    color: #f9a34c;
 }
 
 
@@ -75,16 +131,18 @@ x) {}
 x) {}
 
 ) {}
+
+
 /*moblie style*/
-@media(max-width: 600px){
-}
 
-
-
+@media(max-width: 600px) {}
 
 
 /*--------------menu---------------*/
+
+
 /* Remove margins and padding from the list, and add a black background color */
+
 ul.topnav {
     list-style-type: none;
     margin: 0;
@@ -93,12 +151,16 @@ ul.topnav {
     background-color: white;
 }
 
-/* Float the list items side by side */
-ul.topnav span:not(:first-child){float: right;
 
+/* Float the list items side by side */
+
+ul.topnav span:not(:first-child) {
+    float: right;
 }
 
+
 /* Style the links inside the list items */
+
 ul.topnav span :first-child {
     display: inline;
     color: #333;
@@ -107,21 +169,21 @@ ul.topnav span :first-child {
     transition: 0.3s;
     font-size: 17px;
 }
+
 ul.topnav span a {
     display: inline;
     padding: 20px 30px 20px 30px;
     margin-right: 30px;
     margin-top: 30px;
-
-
 }
+
 ul.topnav span img {
     display: inline;
     padding: 30px 30px 30px 30px;
     margin-right: 30px;
     margin-top: 10px;
-
 }
+
 ul.topnav span a {
     display: inline;
     color: #333;
@@ -132,71 +194,95 @@ ul.topnav span a {
     transition: 0.3s;
     font-size: 17px;
     top: 20px;
-
 }
 
-.margin-bottom{
+.margin-bottom {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
+
 /* Change background color of links on hover */
+
 .hover-orange :hover {
-    background-color:  #f9a34c ;
-    color: #555}
-
-/* Hide the list item that contains the link that should open and close the topnav on small screens */
-ul.topnav span.icon {display: none;}
-
-/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
-@media screen and (max-width:680px) {
-  ul.topnav span:not(:first-child) {display: none;}
-  ul.topnav span.icon {
-    float: right;
-    display: flex;
-  }
+    background-color: #f9a34c;
+    color: #555
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+
+/* Hide the list item that contains the link that should open and close the topnav on small screens */
+
+ul.topnav span.icon {
+    display: none;
+}
+
+
+/* When the screen is less than 680 pixels wide, hide all list items, except for the first one ("Home"). Show the list item that contains the link to open and close the topnav (li.icon) */
+
 @media screen and (max-width:680px) {
-  ul.topnav.responsive {position: absolute;;}
-  ul.topnav.responsive span.icon {
-    position: fixed;
-    right: 0;
-    top: 0;
-  }
-  ul.topnav.responsive span {
-    float: none;
-    display: inline;
-  }
-  ul.topnav.responsive span a {
-    display: block;
-    text-align: left;
-  }
-  ul.topnav span :first-child {
-      display: inline;
-      color: #333;
-      text-align: center;
-      /*padding: 20px 20px 20px;
+    ul.topnav span:not(:first-child) {
+        display: none;
+    }
+    ul.topnav span.icon {
+        float: right;
+        display: flex;
+    }
+}
+
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens */
+
+@media screen and (max-width:680px) {
+    ul.topnav.responsive {
+        position: absolute;
+        ;
+    }
+    ul.topnav.responsive span.icon {
+        position: fixed;
+        right: 0;
+        top: 0;
+    }
+    ul.topnav.responsive span {
+        float: none;
+        display: inline;
+    }
+    ul.topnav.responsive span a {
+        display: block;
+        text-align: left;
+    }
+    ul.topnav span :first-child {
+        display: inline;
+        color: #333;
+        text-align: center;
+        /*padding: 20px 20px 20px;
       margin-left: 0px;
       margin-top: 10px;
       margin-right: 30px;*/
-      text-decoration: none;
-      transition: 0.3s;
-      font-size: 17px;
-  }
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 17px;
+    }
 }
+
+
 /*#no-move{
     position: fixed;
     top: 0;
     right: 0;
 }*/
-.will-center img{
+
+.will-center img {
     /*border: 1px solid red;*/
-    position: fixed;top: 0; left: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
-#img-height{
+#img-height {
     height: 15vh;
 }
+
+
 /*--------------end menu---------------*/
+
+--*/ */ /
