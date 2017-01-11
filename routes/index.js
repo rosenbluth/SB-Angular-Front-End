@@ -36,29 +36,6 @@ router.post('/api/partners/login', function(req,res){
     if ( !email || !password ) {
     res.send( 'email or password cannot be empty' );
     } else {
-
-//     knex( 'players' ).where( {
-//         email: email
-//     } ).first().then( function( player ) {
-//         if ( player ) {
-//             // console.log( "player", player );
-//             bcrypt.compare(password, player.password ,function(err,response){
-//                 if(response){
-//                     // console.log(response, 'response from bcrypt compare');
-//                     var token = jwt.sign( {
-//                         id: player.id
-//                     }, ( process.env.JWT_SECRET ) );
-//                     res.json( {
-//                         token: token
-//                     } );
-//                 }
-//              else {
-//             res.send( 'wrong email or password' );
-//         }
-//     } )
-// }
-//
-// } )
     Partner.findOne({"email": email}).then(function(partnerReturned){
         console.log(partnerReturned, 'partnerReturned');
         if(partnerReturned){
@@ -185,28 +162,6 @@ router.get( '/verify', function( req, res ) {
         console.log( token, 'token from /verify route' );
         const payload = jwt.verify( token, ( process.env.JWT_SECRET ) );
         console.log( payload, 'payload from /verify route' );
-        // knex( 'players' ).where( {
-        //     id: payload.id
-        // } ).first().then( function( user ) {
-        //     if ( user ) {
-        //         // console.log( user, 'user from /verify route' );
-        //         res.json( {
-        //             id: user.id,
-        //             username: user.username,
-        //             first_name: user.first_name,
-        //             last_name: user.last_name
-        //         } )
-        //     } else {
-        //         res.status( 403 ).json( {
-        //             error: "Invalid ID"
-        //         } )
-        //     }
-        // } )
-        //
-        //
-        //
-        // Partners.find(id:payload.id)
-        //
     } else {
         res.status( 403 ).json( {
             error: "No token"
