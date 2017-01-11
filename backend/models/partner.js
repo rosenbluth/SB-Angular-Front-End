@@ -1,7 +1,8 @@
 var mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const ReferralSchema = require('./referral');
 
-
-module.exports = mongoose.model('Partner', {
+var PartnerSchema = new Schema({
 
     email: {
         type: String,
@@ -96,7 +97,7 @@ module.exports = mongoose.model('Partner', {
     nonConversionCourtesyBenefit: {
         type: Number,
         default: 25
-    }
+    },
     //--------********-------
     //--------********------- total amount partner has earned in referrals
 
@@ -106,5 +107,10 @@ module.exports = mongoose.model('Partner', {
 
     //growth:
     //399 + ((999 * .1) * 12) = 1597.80
-    // referrals: [ReferralSchema],
+
+    referrals: [ReferralSchema]
+
+
 });
+
+module.exports = PartnerSchema;

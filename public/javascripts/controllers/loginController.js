@@ -10,13 +10,13 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
         event.preventDefault();
         // console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
-        $http.post('http://localhost:9090/editor/searchUsers', $scope.view.loginInfo)
-        .then(function(response){
-            // console.log('post route working');
+        $http.post('/api/partners/login', $scope.view.loginInfo)
+            .then(function(response){
             console.log( response, 'response');
-            // $location.path('/table')g
+            $window.localStorage.setItem('token', response.data.token);
+            $location.path('/table')
         }).catch(function(err){
-            console.log(error, 'error');
+            console.log(err, 'error');
         })
     }
 
