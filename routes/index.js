@@ -172,8 +172,10 @@ router.post('/api/referrals', function(req, res){
     let referral = req.body;
     console.log(referral, 'req.body referral from post route');
     let newReferral = new Referral(referral);
-    newReferral.save(function(referralInserted){
-        res.json(referralInserted)
+    newReferral.save(function(err, newReferral){
+        console.log(err, 'error');
+        console.log(newReferral, 'newReferral');
+        res.json(newReferral)
     //    res.end();
 });
 });
