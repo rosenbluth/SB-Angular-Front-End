@@ -27,7 +27,7 @@ router.post('/api/partners', function(req,res){
 
 router.post('/api/partners/login', function(req,res){
     let personLoggingIn = req.body;
-    
+
 });
 
 // ************** referrals **************
@@ -55,4 +55,24 @@ router.post('/api/referrals', function(req, res){
 });
 
 
-module.exports = router;;
+router.get('/api/partners/:partner_email', function(req, res, next) {
+    let partnerEmail = req.body.email;
+    let referrals = [];
+    let allPartnerReferralInfo = [];
+    console.log(partnerEmail, 'partner email');
+    Partner.find({
+        email: partnerEmail
+    }).then(function(returnedPartner) {
+        allPartnerReferralInfo.push(returnedPartner[0])
+        Referral.find({
+            referrerEmail: partnerEmail
+        }).then(function(referralsReturned) {
+            console.log(referralsReturned);
+            allPartnerReferralInfo.push(referralsReturned);
+            res.send(allPartnerReferralInfo)
+        })
+    })
+});
+
+
+module.exports = router;

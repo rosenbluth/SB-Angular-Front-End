@@ -5,6 +5,10 @@ body{
     display: flex;
 }
 
+.orangeLine:hover{
+    border-bottom: 3px solid #f77c00;
+
+}
 
 .cardContent{
   display: flex;
@@ -23,6 +27,16 @@ body{
   justify-content:center;
 }
 
+.leftSide{
+  display: flex;
+  justify-content:flex-start;
+}
+
+.rightSideNavButtons {
+  display: flex;
+  justify-content:flex-end;;
+}
+
 /*desktop style*/
 
 .submitBtn {
@@ -35,10 +49,12 @@ body{
 
 .center {
     display: flex;
-    position: absolute;
+    position: relative;
     justify-content: center;
 }
-
+.myMargin{
+  margin-bottom: -35px;
+}
 .topCenter {
     display: flex;
     justify-content: center;
@@ -56,8 +72,7 @@ body{
 
 .striped>tbody>tr:nth-child(odd)>td,
 .striped>tbody>tr:nth-child(odd)>th {
-   background-color: #e0e0e0; // Choose your own color here
- }
+   background-color: #e0e0e0;
 
 
 button:focus {
