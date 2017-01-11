@@ -12,7 +12,7 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window',  f
     }).then(function successCallback(response) {
         console.log(response.data);
     }, function errorCallback(error) {
-        console.log(error);
+        // console.log(error);
 
            // called asynchronously if an error occurs
            // or server returns response with an error status.

@@ -8,7 +8,7 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
 
     $scope.view.loginClicked = function(event){
         event.preventDefault();
-        // console.log($scope.view.loginInfo);
+        console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
         $http.post('/api/partners/login', $scope.view.loginInfo)
             .then(function(response){

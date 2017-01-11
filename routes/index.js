@@ -73,6 +73,7 @@ router.post('/api/partners/login', function(req,res){
 //create a new user account and issue a token
 router.post( '/api/signup', function( req, res ) {
     console.log( req.body, 'req.body from /signup post route' );
+    let partner;
     let errors = [];
     if ( !req.body.email ) {
         errors.push( "Email can't be blank" )
@@ -100,14 +101,15 @@ router.post( '/api/signup', function( req, res ) {
                                                 password: passwordHash
                                             });
                 newPartner.save(function(err, partnerInserted){
-                    console.log(partnerInserted, 'partnerInserted');
-                    const partner = partnerInserted;
+                    // console.log(partnerInserted, 'partnerInserted');
+                    partner = partnerInserted;
                     const token = jwt.sign({id:partner.id}, "booyah")
-                    console.log(token, 'token from post /signup route');
-                    res.json(
-                        {id:partner.id,
-                        email: partner.email,
-                        token: token
+                    Referral.update({leadEmail: req.body.leadEmail}, {$set: {referrerEmail: partner.email}},
+                    function(err, returned){
+                        res.json(
+                            {email: partner.email,
+                            token: token
+                        })
                     })
                 })
             }else{
@@ -126,16 +128,16 @@ router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
     let partnerEmail = req.params.partner_email;
     let referrals = [];
     let allPartnerReferralInfo = [];
-    // console.log(partnerEmail, 'partner email');
+    console.log(partnerEmail, 'partner email');
     Partner.find({
         email: partnerEmail
     }).then(function(returnedPartner) {
-        // console.log(returnedPartner, 'returnedPartner');
+        console.log(returnedPartner, 'returnedPartner');
         allPartnerReferralInfo.push(returnedPartner[0])
-        .then(    Referral.find({
+        .then(Referral.find({
                 referrerEmail: partnerEmail
             }).then(function(referralsReturned) {
-                // console.log(referralsReturned, 'referralsReturned');
+                console.log(referralsReturned, 'referralsReturned');
                 allPartnerReferralInfo.push(referralsReturned);
                 console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
                 res.send(allPartnerReferralInfo)
