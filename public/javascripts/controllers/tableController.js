@@ -1,4 +1,5 @@
-app.controller('tableController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', function($scope, $http, $location, $window, CurrentPartner) {
+app.controller('tableController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
+    $scope.logout = LogOutService();
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
