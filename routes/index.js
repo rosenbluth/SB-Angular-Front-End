@@ -39,32 +39,6 @@ router.post('/api/partners/login', function(req,res){
     if ( !email || !password ) {
     res.send( 'email or password cannot be empty' );
     } else {
-
-
-
-//     knex( 'players' ).where( {
-//         email: email
-//     } ).first().then( function( player ) {
-//         if ( player ) {
-//             // console.log( "player", player );
-//             bcrypt.compare(password, player.password ,function(err,response){
-//                 if(response){
-//                     // console.log(response, 'response from bcrypt compare');
-//                     var token = jwt.sign( {
-//                         id: player.id
-//                     }, ( process.env.JWT_SECRET ) );
-//                     res.json( {
-//                         token: token
-//                     } );
-//                 }
-//              else {
-//             res.send( 'wrong email or password' );
-//         }
-//     } )
-// }
-//
-// } )
-
     Partner.findOne({"email": email}).then(function(partnerReturned){
         console.log(partnerReturned, 'partnerReturned');
         if(partnerReturned){
@@ -87,6 +61,88 @@ router.post('/api/partners/login', function(req,res){
 }
 
 });
+
+
+
+
+//create a new user account and issue a token
+router.post( '/api/signup', function( req, res ) {
+    console.log( req.body, 'req.body from /signup post route' );
+    let errors = [];
+    if ( !req.body.email ) {
+        errors.push( "Email can't be blank" )
+    };
+    if ( !req.body.password ) {
+        errors.push( "Password can't be blank" )
+    };
+    if ( errors.length ) {
+        console.log( errors );
+        res.status( 422 ).json( {
+            errors: errors
+        } )
+    } else {
+        // console.log('inelse');
+        const saltRounds = 4;
+        const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
+        const newPartner = new Partner({firstName: req.body.firstName,
+                                        lastName: req.body.lastName,
+                                        email: req.body.email,
+                                        phone: req.body.phone,
+                                        stripe: req.body.stripe,
+                                        venmo: req.body.venmo,
+                                        password: passwordHash
+                                    });
+        newPartner.save(function(err, partnerInserted){
+            console.log(partnerInserted, 'partnerInserted');
+            const partner = partnerInserted;
+            const token = jwt.sign({id:partner.id}, process.env.JWT_SECRET)
+            console.log(token, 'token from post /signup route');
+        })
+
+
+
+        // knex( 'players' ).where( 'email', req.body.email )
+        //     .count()
+        //     .first()
+        //     .then( function( result ) {
+        //         if ( result.count === "0" ) {
+        //             const saltRounds = 4;
+        //             const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
+        //             knex( 'players' )
+        //                 .insert( {
+        //                     email: req.body.email,
+        //                     username: req.body.username,
+        //                     password: passwordHash,
+        //                     first_name: req.body.firstname,
+        //                     last_name: req.body.lastname,
+        //                 } )
+        //                 .returning( '*' )
+        //                 .then( function( users ) {
+        //                     const user = users[ 0 ];
+        //                     const token = jwt.sign( {
+        //                         id: user.id
+        //                     }, ( process.env.JWT_SECRET ) );
+        //                     console.log( token, 'token from post /signup route' );
+        //                     res.json( {
+        //                         id: user.id,
+        //                         email: user.email,
+        //                         username: user.username,
+        //                         firstname: user.first_name,
+        //                         lastname: user.last_name,
+        //                         token: token
+        //                     } )
+        //                 } )
+        //         } else {
+        //             res.status( 422 ).json( {
+        //                 errors: [ "Email has already been taken" ]
+        //             } )
+        //         }
+        //     } )
+    }
+} );
+
+
+
 
 
 //get all partner info and that partner's referrals
