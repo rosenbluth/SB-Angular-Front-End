@@ -11,19 +11,19 @@
                 <th>Email</th>
                 <th>Amount to Date</th>
                 <th>Next Payout Date</th>
-                <th>Payout</th>
+                <th>Next Payout</th>
                 <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="referral in view.referrals">
-                <td>{{referral.name}}</td>
-                <td>{{referral.company}}</td>
-                <td>{{referral.email}}</td>
-                <td>{{referral.amountToDate}}</td>
-                <td>{{referral.payoutDate}}</td>
-                <td>{{referral.payout}}</td>
-                <td>{{referral.status}}</td>
+            <tr ng-repeat="referral in data">
+                <td>{{referral.leadName}}</td>
+                <td>{{referral.leadCompanyName}}</td>
+                <td>{{referral.leadEmail}}</td>
+                <td>{{amountToDate}}</td>
+                <td>{{date}}</td>
+                <td>{{payout}}</td>
+                <td>{{referral.activeReferral?'Active':'InActive'}}</td>
             </tr>
         </tbody>
     </table>
