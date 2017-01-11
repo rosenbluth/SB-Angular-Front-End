@@ -9,7 +9,7 @@ app.service('CurrentPartner', ['$http', '$location', function($http, $location) 
                   'token')
               }
             };
-            return $http.get('/verify', config)
+            return $http.get('/api/verify', config)
               .then(function(response) {
                   console.log(response.data, 'response.data from /verify dot then');
                 return response.data;
@@ -21,7 +21,7 @@ app.service('CurrentPartner', ['$http', '$location', function($http, $location) 
               return null;
             });
         }else{
-                $location.path('/')
+                $location.path('/login')
         }
         }
 

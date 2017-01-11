@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
+app.controller('loginController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', function($scope, $http, $location, $window, CurrentPartner) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from login controller';
@@ -12,13 +12,16 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
         console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
         $http.post('/api/partners/login', $scope.view.loginInfo)
-            .then(function(response){
-            console.log( response, 'response');
-            $window.localStorage.setItem('token', response.data.token);
-            $location.path('/table')
-        }).catch(function(err){
-            console.log(err, 'error');
+        .then(function(response){
+            $window.localStorage.setItem('token', response.data.token)
         })
+        .then(function(){
+            $location.path('/table')
+        })
+
+
+
+
     }
 
 

@@ -82,7 +82,7 @@ router.post('/api/partners/login', function(req,res){
 
 
 //create a new user account and issue a token
-router.post( '/api/signup', function( req, res ) {
+router.post( '/api/partners/signup', function( req, res ) {
     console.log( req.body, 'req.body from /signup post route' );
     let partner;
     let errors = [];
@@ -181,7 +181,7 @@ router.post('/api/referrals', function(req, res){
 });
 // ************** end referrals **************
 // ************** token auth **************
-router.get( '/verify', function( req, res ) {
+router.get( '/api/verify', function( req, res ) {
     if ( req.headers.authorization ) {
         const token = req.headers.authorization.split( ' ' )[ 1 ];
         console.log( token, 'token from /verify route' );
@@ -191,9 +191,9 @@ router.get( '/verify', function( req, res ) {
         Partner.find({_id: payload.id}).then(function(returnedPartner){
             console.log(returnedPartner, 'returnedPartner');
             if(returnedPartner[0]){
-                console.log( returnedPartner[0], 'partner from /verify route' );
+                console.log( returnedPartner[0]._id, 'partner from /verify route' );
                    res.json( {
-                       id: returnedPartner[0].id,
+                       id: returnedPartner[0]._id,
                        email: returnedPartner[0].email,
                  } )
             }
