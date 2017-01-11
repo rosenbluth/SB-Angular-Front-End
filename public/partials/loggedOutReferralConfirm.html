@@ -1,6 +1,4 @@
-<!-- <ng-include src="'partials/loader.html'"></ng-include> -->
-<ng-include src="'partials/header.html'"></ng-include>
-<!-- sign up card-->
+<ng-include src="'partials/test.html'"></ng-include>
 
 <div class="myContainer">
     <h1>Referrals Page</h1>
@@ -17,17 +15,18 @@
                     <h5>Thank you for providing the referral information. You will only be able to track your progress after you register and login.</h5>
                     </br>
 
-                    <div class='cardContentButtons'>
-                        <button ng-click=view.registerClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Register
-                         </button>
-                    </div>
-                    <div class='cardContentButtons'>
-                        <button ng-click=view.closeClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Close
-                       </button>
-                    </div>
-                    <div class='cardContentButtons'>
-                        <button ng-click=view.loginClicked($event) class="submitBtn btn waves-effect waves-light" type="submit" name="action">Log In
-                         </button>
+                    <div class="row">
+                        <div class="loginButtons">
+                            <div class="closeButtonLogin">
+                                <button class="submitBtn btn waves-effect waves-light wButton" type="" name="" ng-click="view.closeClicked($event)">Close</button>
+                            </div>
+
+                            <div class="closeButtonLogin">
+                                <button ng-click="view.registerClicked($event)" class="submitBtn btn waves-effect waves-light sbButton" type="submit" name="action">Register</button>
+                            </div>
+
+                            <button class="submitBtn btn waves-effect waves-light sbButton" type="submit" name="action" ng-click="view.loginClicked($event)">Login</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,4 +34,4 @@
     </div>
 </div>
 
-<ng-include src="'partials/footer.html'"></ng-include>
+<!-- <ng-include src="'partials/footer.html'"></ng-include> -->
