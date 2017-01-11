@@ -22,7 +22,7 @@ var PartnerSchema = new Schema({
     phone: {
         type: String,
     },
-    hashed_password: {
+    password: {
         type: String,
     },
     salt: String,

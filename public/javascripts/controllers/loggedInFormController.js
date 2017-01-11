@@ -1,4 +1,4 @@
-app.controller('loggedInFormController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('loggedInFormController', ['$scope', '$http', '$location', 'CurrentUser', function($scope, $http, $location, CurrentUser) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from logged in form controller';
