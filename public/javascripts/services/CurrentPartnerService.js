@@ -17,7 +17,7 @@ app.service('CurrentPartner', ['$http', '$location', function($http, $location) 
 
             .catch(function(error) {
               console.log(error, 'resolve error');
-            //   localStorage.clear();
+              localStorage.clear();
               return null;
             });
         }else{
