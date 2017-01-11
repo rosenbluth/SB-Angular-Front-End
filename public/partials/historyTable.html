@@ -1,5 +1,6 @@
 <ng-include src="'partials/navbar.html'"></ng-include>
 
+
 <h5>Referral Program History</h5>
 <div class="card">
     <table class="striped responsive-table">
@@ -15,59 +16,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$300,000</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$55</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$17</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$4</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$1,000,000</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
-            </tr>
-            <tr>
-                <td>Shooter McGavin</td>
-                <td>Example Company</td>
-                <td>shooter.mcgavin@gmail.com</td>
-                <td>$27</td>
-                <td>April 1st</td>
-                <td>$200</td>
-                <td>Active</td>
+            <tr ng-repeat="referral in view.referrals">
+                <td>{{referral.name}}</td>
+                <td>{{referral.company}}</td>
+                <td>{{referral.email}}</td>
+                <td>{{referral.amountToDate}}</td>
+                <td>{{referral.payoutDate}}</td>
+                <td>{{referral.payout}}</td>
+                <td>{{referral.status}}</td>
             </tr>
         </tbody>
     </table>
