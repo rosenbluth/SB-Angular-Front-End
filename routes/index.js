@@ -10,7 +10,6 @@ const jwt = require( 'jsonwebtoken' );
 const bcrypt = require( 'bcrypt' );
 const Partner = mongoose.model('Partner', PartnerSchema);
 const Referral = mongoose.model('Referral', ReferralSchema);
-
 // ************** partners **************
 router.get('/api/partners', function(req, res) {
     Partner.find().then(function(err, partners) {
@@ -23,7 +22,6 @@ router.get('/api/partners', function(req, res) {
         }
     })
 });
-
 router.post('/api/partners', function(req,res){
     let partner = req.body;
     console.log(partner, 'newPartner from api');
@@ -32,13 +30,35 @@ router.post('/api/partners', function(req,res){
         res.json(partnerInserted)
     })
 });
-
 router.post('/api/partners/login', function(req,res){
     var email = req.body.email;
     var password = req.body.password;
     if ( !email || !password ) {
     res.send( 'email or password cannot be empty' );
     } else {
+
+//     knex( 'players' ).where( {
+//         email: email
+//     } ).first().then( function( player ) {
+//         if ( player ) {
+//             // console.log( "player", player );
+//             bcrypt.compare(password, player.password ,function(err,response){
+//                 if(response){
+//                     // console.log(response, 'response from bcrypt compare');
+//                     var token = jwt.sign( {
+//                         id: player.id
+//                     }, ( process.env.JWT_SECRET ) );
+//                     res.json( {
+//                         token: token
+//                     } );
+//                 }
+//              else {
+//             res.send( 'wrong email or password' );
+//         }
+//     } )
+// }
+//
+// } )
     Partner.findOne({"email": email}).then(function(partnerReturned){
         console.log(partnerReturned, 'partnerReturned');
         if(partnerReturned){
@@ -56,11 +76,9 @@ router.post('/api/partners/login', function(req,res){
             console.log('wrong email or password');
         }
     })
-
-
 }
-
 });
+
 
 
 
@@ -139,7 +157,6 @@ router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
 }
 )
 // ************** end partners **************
-
 // ************** referrals **************
 //get all referrals--admin
 router.get('/api/referrals', function(req, res) {
@@ -151,10 +168,7 @@ router.get('/api/referrals', function(req, res) {
         }
     })
 });
-
-
 router.post('/api/referrals', function(req, res){
-
     let referral = req.body;
     console.log(referral, 'req.body referral from post route');
     let newReferral = new Referral(referral);
@@ -162,11 +176,8 @@ router.post('/api/referrals', function(req, res){
         res.json(referralInserted)
     //    res.end();
 });
-
 });
-
 // ************** end referrals **************
-
 // ************** token auth **************
 router.get( '/verify', function( req, res ) {
     if ( req.headers.authorization ) {
@@ -174,9 +185,6 @@ router.get( '/verify', function( req, res ) {
         console.log( token, 'token from /verify route' );
         const payload = jwt.verify( token, ( process.env.JWT_SECRET ) );
         console.log( payload, 'payload from /verify route' );
-
-
-
         // knex( 'players' ).where( {
         //     id: payload.id
         // } ).first().then( function( user ) {
@@ -199,9 +207,6 @@ router.get( '/verify', function( req, res ) {
         //
         // Partners.find(id:payload.id)
         //
-
-
-
     } else {
         res.status( 403 ).json( {
             error: "No token"
@@ -209,7 +214,4 @@ router.get( '/verify', function( req, res ) {
     }
 } );
 // ************** end token auth **************
-
-
-
 module.exports = router;
