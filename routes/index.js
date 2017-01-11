@@ -43,17 +43,28 @@ router.post('/api/partners', function(req,res){
 router.post('/api/partners/login', function(req,res){
     var email = req.body.email;
     var password = req.body.password;
+    console.log(req.body.leadEmail, 'req.body.leadEmail');
+    console.log(password, 'password');
     if ( !email || !password ) {
     res.send( 'email or password cannot be empty' );
     } else {
-    Partner.findOne({"email": email}).then(function(partnerReturned){
-        console.log(partnerReturned, 'partnerReturned');
+    Partner.find({"email": email}).then(function(partnerReturned){
+        // console.log(partnerReturned, 'partnerReturned');
         if(partnerReturned){
-            console.log('this person returned');
-            bcrypt.compare(password, partnerReturned.password, function(err, response){
+            console.log('this person returned', partnerReturned[0]);
+            bcrypt.compare(password, partnerReturned[0].password, function(err, response){
                 if(response){
-                    var token = jwt.sign({id:player.id}, (process.env.JWT_SECRET));
-                    res.json({token:token});
+                    console.log('there was a response from bcrypt');
+                    var token = jwt.sign({id:partnerReturned[0].id}, "booyah")
+                    // res.json({token:token});
+                    Referral.update({leadEmail: req.body.leadEmail}, {$set: {referrerEmail: req.body.email}},
+                    function(err, returned){
+                        console.log(returned, 'returned referral from login route');
+                        res.json(
+                            {email: req.body.email,
+                            token: token
+                        })
+                    })
                 }else{
                     console.log('wrong email or password');
                     res.send('wrong email or password')
@@ -90,8 +101,8 @@ router.post( '/api/signup', function( req, res ) {
         Partner.findOne({email: req.body.email}, function(err,result){
             if(!result){
                 console.log('inelse');
-                const saltRounds = 4;
-                const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
+                var saltRounds = 4;
+                var passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
                 const newPartner = new Partner({firstName: req.body.firstName,
                                                 lastName: req.body.lastName,
                                                 email: req.body.email,
@@ -103,7 +114,7 @@ router.post( '/api/signup', function( req, res ) {
                 newPartner.save(function(err, partnerInserted){
                     // console.log(partnerInserted, 'partnerInserted');
                     partner = partnerInserted;
-                    const token = jwt.sign({id:partner.id}, "booyah")
+                    var token = jwt.sign({id:partner.id}, "booyah")
                     Referral.update({leadEmail: req.body.leadEmail}, {$set: {referrerEmail: partner.email}},
                     function(err, returned){
                         res.json(

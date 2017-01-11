@@ -4,6 +4,7 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
     $scope.view.booyah = 'booyah from login controller';
 
     $scope.view.loginInfo = {};
+    $scope.view.loginInfo.leadEmail = $window.localStorage.getItem('leadEmail');
 
 
     $scope.view.loginClicked = function(event){
