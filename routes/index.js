@@ -183,8 +183,19 @@ router.get( '/verify', function( req, res ) {
     if ( req.headers.authorization ) {
         const token = req.headers.authorization.split( ' ' )[ 1 ];
         console.log( token, 'token from /verify route' );
-        const payload = jwt.verify( token, ( process.env.JWT_SECRET ) );
+        const payload = jwt.verify( token, "booyah" );
         console.log( payload, 'payload from /verify route' );
+
+        Partner.find({_id: payload.id}).then(function(returnedPartner){
+            console.log(returnedPartner, 'returnedPartner');
+            if(returnedPartner[0]){
+                console.log( returnedPartner[0], 'partner from /verify route' );
+                   res.json( {
+                       id: returnedPartner[0].id,
+                       email: returnedPartner[0].email,
+                 } )
+            }
+        })
     } else {
         res.status( 403 ).json( {
             error: "No token"

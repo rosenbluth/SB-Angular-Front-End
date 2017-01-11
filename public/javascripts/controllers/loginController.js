@@ -22,6 +22,4 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
     }
 
 
-
-
 }]);

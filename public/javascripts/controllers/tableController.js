@@ -1,4 +1,4 @@
-app.controller('tableController', ['$scope', '$http', '$location', '$window',  function($scope, $http, $location, $window) {
+app.controller('tableController', ['$scope', '$http', '$location', '$window','CurrentPartner',  function($scope, $http, $location, $window, CurrentPartner) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
