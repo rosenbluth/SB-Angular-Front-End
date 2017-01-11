@@ -13,9 +13,10 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
         console.log($scope.view.partner, 'scope.view.newPartner');
         $window.localStorage.setItem('email', $scope.view.partner.email);
         $http.post('/api/signup',$scope.view.partner)
-        .then(function(){
+        .then(function(response){
             console.log('post route working');
-            // $location.path('/table')
+            $window.localStorage.setItem('token', response.data.token);
+            $location.path('/table')
         })
     }
 

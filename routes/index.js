@@ -81,65 +81,36 @@ router.post( '/api/signup', function( req, res ) {
             errors: errors
         } )
     } else {
-        // console.log('inelse');
-        const saltRounds = 4;
-        const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
-        const newPartner = new Partner({firstName: req.body.firstName,
-                                        lastName: req.body.lastName,
-                                        email: req.body.email,
-                                        phone: req.body.phone,
-                                        stripe: req.body.stripe,
-                                        venmo: req.body.venmo,
-                                        password: passwordHash
-                                    });
-        newPartner.save(function(err, partnerInserted){
-            console.log(partnerInserted, 'partnerInserted');
-            const partner = partnerInserted;
-            const token = jwt.sign({id:partner.id}, process.env.JWT_SECRET)
-            console.log(token, 'token from post /signup route');
+        Partner.findOne({email: req.body.email}, function(err,result){
+            if(!result){
+                console.log('inelse');
+                const saltRounds = 4;
+                const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
+                const newPartner = new Partner({firstName: req.body.firstName,
+                                                lastName: req.body.lastName,
+                                                email: req.body.email,
+                                                phone: req.body.phone,
+                                                stripe: req.body.stripe,
+                                                venmo: req.body.venmo,
+                                                password: passwordHash
+                                            });
+                newPartner.save(function(err, partnerInserted){
+                    console.log(partnerInserted, 'partnerInserted');
+                    const partner = partnerInserted;
+                    const token = jwt.sign({id:partner.id}, "booyah")
+                    console.log(token, 'token from post /signup route');
+                    res.json(
+                        {id:partner.id,
+                        email: partner.email,
+                        token: token
+                    })
+                })
+            }else{
+                res.status( 422 ).json( )
+            }
         })
-
-
-
-        // knex( 'players' ).where( 'email', req.body.email )
-        //     .count()
-        //     .first()
-        //     .then( function( result ) {
-        //         if ( result.count === "0" ) {
-        //             const saltRounds = 4;
-        //             const passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
-        //             knex( 'players' )
-        //                 .insert( {
-        //                     email: req.body.email,
-        //                     username: req.body.username,
-        //                     password: passwordHash,
-        //                     first_name: req.body.firstname,
-        //                     last_name: req.body.lastname,
-        //                 } )
-        //                 .returning( '*' )
-        //                 .then( function( users ) {
-        //                     const user = users[ 0 ];
-        //                     const token = jwt.sign( {
-        //                         id: user.id
-        //                     }, ( process.env.JWT_SECRET ) );
-        //                     console.log( token, 'token from post /signup route' );
-        //                     res.json( {
-        //                         id: user.id,
-        //                         email: user.email,
-        //                         username: user.username,
-        //                         firstname: user.first_name,
-        //                         lastname: user.last_name,
-        //                         token: token
-        //                     } )
-        //                 } )
-        //         } else {
-        //             res.status( 422 ).json( {
-        //                 errors: [ "Email has already been taken" ]
-        //             } )
-        //         }
-        //     } )
     }
-} );
+});
 
 
 
