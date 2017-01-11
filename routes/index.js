@@ -10,6 +10,9 @@ const jwt = require( 'jsonwebtoken' );
 const bcrypt = require( 'bcrypt' );
 const Partner = mongoose.model('Partner', PartnerSchema);
 const Referral = mongoose.model('Referral', ReferralSchema);
+
+
+
 // ************** partners **************
 router.get('/api/partners', function(req, res) {
     Partner.find().then(function(err, partners) {
@@ -22,6 +25,9 @@ router.get('/api/partners', function(req, res) {
         }
     })
 });
+
+
+
 router.post('/api/partners', function(req,res){
     let partner = req.body;
     console.log(partner, 'newPartner from api');
@@ -30,6 +36,10 @@ router.post('/api/partners', function(req,res){
         res.json(partnerInserted)
     })
 });
+
+
+
+//verify user's credentials and issue a token
 router.post('/api/partners/login', function(req,res){
     var email = req.body.email;
     var password = req.body.password;
@@ -116,20 +126,20 @@ router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
     let partnerEmail = req.params.partner_email;
     let referrals = [];
     let allPartnerReferralInfo = [];
-    console.log(partnerEmail, 'partner email');
+    // console.log(partnerEmail, 'partner email');
     Partner.find({
         email: partnerEmail
     }).then(function(returnedPartner) {
-        console.log(returnedPartner, 'returnedPartner');
+        // console.log(returnedPartner, 'returnedPartner');
         allPartnerReferralInfo.push(returnedPartner[0])
-        Referral.find({
-            referrerEmail: partnerEmail
-        }).then(function(referralsReturned) {
-            // console.log(referralsReturned);
-            allPartnerReferralInfo.push(referralsReturned);
-            console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
-            res.send(allPartnerReferralInfo)
-        })
+        .then(    Referral.find({
+                referrerEmail: partnerEmail
+            }).then(function(referralsReturned) {
+                // console.log(referralsReturned, 'referralsReturned');
+                allPartnerReferralInfo.push(referralsReturned);
+                console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
+                res.send(allPartnerReferralInfo)
+            }))
     })
 }
 )

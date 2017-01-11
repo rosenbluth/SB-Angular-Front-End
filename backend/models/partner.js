@@ -108,7 +108,7 @@ var PartnerSchema = new Schema({
     //growth:
     //399 + ((999 * .1) * 12) = 1597.80
 
-    referrals: [ReferralSchema]
+    // referrals: [ReferralSchema]
 
 
 });

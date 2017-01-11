@@ -31,7 +31,8 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window',  f
    // })
 
     $http.get('/api/partners/' +$scope.currentUser.email + '/referrals').then(function(response){
-        console.log(response, 'response');
+        //need to plug these values in to table
+        console.log(response, 'asdasd response');
     });
 
 

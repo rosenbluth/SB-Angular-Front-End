@@ -19,7 +19,7 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
         $scope.view.newReferral.conversionDate = new Date();
         console.log('submitReferralClicked running');
         console.log($scope.view.newReferral, '($scope.view.newReferral,')
-        $http.post('http://localhost:9090/referral/form', $scope.view.newReferral).then(function() {
+        $http.post('/api/referrals', $scope.view.newReferral).then(function() {
             console.log('no ***response*** from server');
             $location.path('/confirmation')
         }, function(err) {
