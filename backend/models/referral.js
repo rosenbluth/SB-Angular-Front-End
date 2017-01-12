@@ -34,14 +34,22 @@ var ReferralSchema = new Schema({
         type: String
     },
 
-    resultedInStarterConversion: {
-        type: Boolean,
-        default: false
+    growthConverted: {
+        type: Boolean
     },
 
-    resultedInGrowthConversion: {
-        type: Boolean,
-        default: false
+    starterConverted: {
+        type: Boolean
+    },
+
+    bonusAmount: {
+        type: Number,
+        default: 0
+    },
+
+    conversionDate: {
+        type: Date,
+
     },
 
     totalAmountPaidForReferral: {
@@ -61,7 +69,7 @@ var ReferralSchema = new Schema({
         default: 1198.80
     },
 
-    numMonthsPassedConverted: {
+    numMonthsPassedSinceConversion: {
         type: Number,
         default: 0
     },

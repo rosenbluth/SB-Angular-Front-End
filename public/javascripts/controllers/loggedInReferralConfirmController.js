@@ -1,4 +1,5 @@
-app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$location', 'CurrentPartner', function($scope, $http, $location, CurrentPartner) {
+app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$location', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, CurrentPartner, LogOutService) {
+    $scope.logout = LogOutService;
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from logged in referral confirm controller';
