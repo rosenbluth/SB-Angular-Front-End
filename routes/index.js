@@ -186,18 +186,19 @@ router.post('/api/referrals/convert', function(req,res){
     let referralToConvert = req.body;
     let momentDate = moment(new Date()).format('YYYY-MM-DD')
     if(referralToConvert.starterConverted){
-        Referral.findByIdAndUpdate({_id: referralToConvert._id},{$set: {starterConverted: true, growthConverted: false, conversionDate: momentDate, bonusAmount: 149, totalAmountPaidForReferral: 149, numMonthsPassedSinceConversion:0}},
+        console.log(momentDate, 'momentDate');
+        Referral.findByIdAndUpdate({_id: referralToConvert._id}, {$set: {starterConverted: true, growthConverted: false, conversionDate: momentDate, bonusAmount: 149, totalAmountPaidForReferral: 149, numMonthsPassedSinceConversion:0, activeReferral: true}},{new:true},
         function(err, returned){
             console.log(returned, 'callback returned referral after starter converted switched to true');
             // console.log(err, 'err switched');
-        // console.log(momentDate, 'momentDate');
+        console.log(momentDate, 'momentDate');
         res.send(returned)
     });
 }
     if(referralToConvert.growthConverted){
-        Referral.findByIdAndUpdate({_id: referralToConvert._id},{$set: {starterConverted: false, growthConverted: true, conversionDate: momentDate, bonusAmount: 399, totalAmountPaidForReferral: 399, numMonthsPassedSinceConversion:0}},
+        Referral.findByIdAndUpdate({_id: referralToConvert._id}, {$set: {starterConverted: false, growthConverted: true, conversionDate: momentDate, bonusAmount: 399, totalAmountPaidForReferral: 399, numMonthsPassedSinceConversion:0, activeReferral: true}}, {new:true},
         function(err, returned){
-            console.log(returned, 'callback returned referral after starter converted switched to true');
+            console.log(returned, 'callback returned referral after growthConverted converted switched to true');
             // console.log(err, 'err switched');
         // console.log(momentDate, 'momentDate');
         res.send(returned)

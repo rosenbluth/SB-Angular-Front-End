@@ -326,3 +326,7 @@ ul.topnav span.icon {
 /*--------------end menu---------------*/
 
 --*/ */ /
+
+.in_block{
+    display: inline-block;
+}
