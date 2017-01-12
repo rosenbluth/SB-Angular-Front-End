@@ -6,8 +6,7 @@ body {
     display: flex;
 }
 
-
-.orangeLine:hover{
+.orangeLine:hover {
     border-bottom: 3px solid #f77c00;
 }
 
@@ -48,20 +47,22 @@ body {
     justify-content: center;
 }
 
-.leftSide{
-  display: flex;
-  justify-content:flex-start;
+.leftSide {
+    display: flex;
+    justify-content: flex-start;
 }
 
 .rightSideNavButtons {
-  display: flex;
-  justify-content:flex-end;;
+    display: flex;
+    justify-content: flex-end;
+    ;
 }
 
 .marginTop {
     display: flex;
     margin-top: 50px;
 }
+
 
 /*desktop style*/
 
@@ -79,15 +80,16 @@ body {
     justify-content: center;
 }
 
-.centerAbsolute{
-  display: flex;
-  justify-content: center;
-  position: absolute;
+.centerAbsolute {
+    display: flex;
+    justify-content: center;
+    position: absolute;
 }
 
-.myMargin{
-  margin-bottom: -35px;
+.myMargin {
+    margin-bottom: -35px;
 }
+
 .topCenter {
     display: flex;
     justify-content: center;
@@ -100,6 +102,7 @@ body {
     top: 3rem;
     justify-content: center;
 }
+
 
 .lowerIconsFooter{
   display: flex;
@@ -122,6 +125,7 @@ body {
   color: white;
 }
 
+
 .striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
     background-color: #e0e0e0;
 }
@@ -134,7 +138,6 @@ button:focus {
 .sbButton {
     background-color: #f9a34c;
 }
-
 
 .sbButton:focus {
     background-color: #f9a34c;
@@ -157,10 +160,10 @@ button:focus {
     background-color: #f9a34c;
 }
 
-.topBlock{
-  display: flex;
-
+.topBlock {
+    display: flex;
 }
+
 #textarea1:focus {
     border-bottom: 1px solid #f9a34c;
     box-shadow: 0 1px 0 0 #f9a34c;
@@ -168,6 +171,12 @@ button:focus {
 
 #textarea1:focus+label {
     color: #f9a34c;
+}
+
+.centeredList {
+    text-align: center;
+    list-style-position: inside;
+    display: inline-block;
 }
 
 
@@ -334,8 +343,36 @@ ul.topnav span.icon {
 
 /*--------------end menu---------------*/
 
---*/ */ /
 
 .in_block{
     display: inline-block;
+}
+
+.bottom-margin{
+    margin-bottom: 90px;
+}
+
+.center-me{
+    text-align: center;
+    margin: 40px;
+}
+.sides-margin{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 40px;
+}
+.please{
+    margin-bottom: 30px;
+}
+.top-hat{
+    margin-top: 30px;
+}
+.neg-top{
+    margin-top: -25px;
+}
+.bottom-spacing-focus{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+
 }
