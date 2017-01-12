@@ -2,7 +2,7 @@ app.controller('loggedInFormController', ['$scope', '$http', '$location', '$wind
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from logged in form controller';
-    $scope.logout = LogOutService();
+    $scope.logout = LogOutService;
 
 
     $scope.view.newReferral = {};

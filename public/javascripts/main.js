@@ -32,7 +32,7 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'tableController',
             resolve: {
                 data: function (CurrentPartner) {
-                  console.log(CurrentPartner, 'CurrentPartner');
+                  console.log(CurrentPartner(), 'CurrentPartner invoked');
                 return CurrentPartner();
               }
           }
