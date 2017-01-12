@@ -4,7 +4,7 @@ app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'partials/home.html',
-            controller: 'homeController'
+            controller: 'homeController',
         })
 
         .when('/confirmation', {
@@ -29,20 +29,36 @@ app.config(function($routeProvider, $locationProvider) {
 
         .when('/table', {
             templateUrl: 'partials/historyTable.html',
-            controller: 'tableController'
+            controller: 'tableController',
+            resolve: {
+                data: function (CurrentPartner) {
+                  console.log(CurrentPartner, 'CurrentPartner');
+                return CurrentPartner();
+              }
+          }
         })
 
         .when('/submitreferral', {
             templateUrl: 'partials/loggedInForm.html',
-            controller: 'loggedInFormController'
+            controller: 'loggedInFormController',
+            resolve: {
+              data: function (CurrentPartner) {
+                return CurrentPartner();
+              }
+            }
         })
 
         .when('/referralconfirm', {
             templateUrl: 'partials/loggedInReferralConfirm.html',
-            controller: 'loggedInReferralConfirmController'
+            controller: 'loggedInReferralConfirmController',
+            resolve: {
+                  data: function (CurrentPartner) {
+                    return CurrentPartner();
+                  }
+                }
         })
-        .when('/test', {
-            templateUrl: 'partials/test.html',
+        .when('/navbar', {
+            templateUrl: 'partials/navbar.html',
             controller: 'loggedInReferralConfirmController'
         })
 });

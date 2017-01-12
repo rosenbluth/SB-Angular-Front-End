@@ -1,38 +1,36 @@
-app.controller('tableController', ['$scope', '$http', '$location', '$window',  function($scope, $http, $location, $window) {
+app.controller('tableController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
+    $scope.logout = LogOutService();
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
-    $scope.currentUser={};
+    $scope.currentUser = {};
 
-   // ********** sample partner route to reference: *************
-       // ********** gets all partners stored in DB **********
-    console.log($http({
-        method: 'GET',
-        url: 'http://localhost:9090/partners'
-    }).then(function successCallback(response) {
-        console.log(response.data);
-    }, function errorCallback(error) {
-        console.log(error);
-
-           // called asynchronously if an error occurs
-           // or server returns response with an error status.
-    })
-   );
     $scope.currentUser.email = $window.localStorage.getItem('email');
     console.log($scope.currentUser.email, 'currentUserEmail');
 
-   // ********** gets info for partner of email 0@0.com (hard-coded) and 0@0.com's referrals too **********
-   // $http.get('/api/partners/' + $scope.currentUserEmail).then(function successCallback(response) {
-   //     console.log("0@0.com's partner and referral data", response.data);
-   // }, function errorCallback(error) {
-   //     // called asynchronously if an error occurs
-   //     // or server returns response with an error status.
-   //     console.log(error);
-   // })
-
-    $http.get('/api/partners/' +$scope.currentUser.email + '/referrals').then(function(response){
-        console.log(response, 'response');
+    //Get request to API and returns referrals for logged in partner, sets to data variable
+    var request = $http.get('/api/partners/' + $scope.currentUser.email + '/referrals').then(function(response) {
+        //need to plug these values in to table
+        console.log(response.data[1], 'asdasd response');
+        $scope.data = response.data[1]; //array of referrals for this partner
+        return response.data;
     });
+
+    //Date information and view for payout date
+    $scope.date = new Date().getMonth() + 1;
+    $scope.payoutDate = function() {
+
+        if (1 <= $scope.date <= 3) {
+            $scope.date = 'April 1st';
+        } else if (4 <= $scope.date <= 6) {
+            $scope.date = 'July 1st';
+        } else if (7 <= $scope.date <= 9) {
+            $scope.date = 'October 1st';
+        } else {
+            $scope.date = 'January 1st';
+        }
+    }();
+
 
 
 }]);

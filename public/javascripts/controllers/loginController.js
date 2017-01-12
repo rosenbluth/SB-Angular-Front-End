@@ -4,11 +4,12 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
     $scope.view.booyah = 'booyah from login controller';
 
     $scope.view.loginInfo = {};
+    $scope.view.loginInfo.leadEmail = $window.localStorage.getItem('leadEmail');
 
 
     $scope.view.loginClicked = function(event){
         event.preventDefault();
-        // console.log($scope.view.loginInfo);
+        console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
         $http.post('/api/partners/login', $scope.view.loginInfo)
             .then(function(response){
@@ -19,8 +20,6 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', fu
             console.log(err, 'error');
         })
     }
-
-
 
 
 }]);

@@ -1,23 +1,19 @@
-app.controller('loggedInFormController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('loggedInFormController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', 'LogOutService', function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
 
     $scope.view = {};
     $scope.view.booyah = 'booyah from logged in form controller';
+    $scope.logout = LogOutService();
 
 
     $scope.view.newReferral = {};
-    $scope.view.newReferral.resultedInConversion = false;
-    $scope.view.newReferral.totalAmountPaidForReferral = 0;
-    $scope.view.newReferral.totalMoneyYearlyStarter = 598.8;
-    $scope.view.newReferral.totalMoneyYearlyGrowth = 1198.80
-    $scope.view.newReferral.numMonthsPassedConverted = 0;
-    $scope.view.newReferral.totalNumOfQuarterlyPayouts = 0;
-    $scope.view.newReferral.activeReferral = true;
+    $scope.view.newReferral.referrerEmail = $window.localStorage.email;
 
     $scope.view.submitReferralClicked = function(event) {
         event.preventDefault();
         $scope.view.newReferral.conversionDate = new Date();
-        $http.post('/api/referrals', $scope.view.newReferral).then(function() {
-            $location.path('/table')
+        $http.post('/api/referrals', $scope.view.newReferral).then(function(response) {
+            console.log(response, 'response dot then logged in form controller');
+            $location.path('/referralconfirm')
         }, function(err) {
             console.log(err, 'error from server');
         })

@@ -10,6 +10,9 @@ const jwt = require( 'jsonwebtoken' );
 const bcrypt = require( 'bcrypt' );
 const Partner = mongoose.model('Partner', PartnerSchema);
 const Referral = mongoose.model('Referral', ReferralSchema);
+
+
+
 // ************** partners **************
 router.get('/api/partners', function(req, res) {
     Partner.find().then(function(err, partners) {
@@ -22,6 +25,9 @@ router.get('/api/partners', function(req, res) {
         }
     })
 });
+
+
+
 router.post('/api/partners', function(req,res){
     let partner = req.body;
     console.log(partner, 'newPartner from api');
@@ -30,42 +36,35 @@ router.post('/api/partners', function(req,res){
         res.json(partnerInserted)
     })
 });
+
+
+
+//verify user's credentials and issue a token
 router.post('/api/partners/login', function(req,res){
     var email = req.body.email;
     var password = req.body.password;
+    console.log(req.body.leadEmail, 'req.body.leadEmail');
+    console.log(password, 'password');
     if ( !email || !password ) {
     res.send( 'email or password cannot be empty' );
     } else {
-//     knex( 'players' ).where( {
-//         email: email
-//     } ).first().then( function( player ) {
-//         if ( player ) {
-//             // console.log( "player", player );
-//             bcrypt.compare(password, player.password ,function(err,response){
-//                 if(response){
-//                     // console.log(response, 'response from bcrypt compare');
-//                     var token = jwt.sign( {
-//                         id: player.id
-//                     }, ( process.env.JWT_SECRET ) );
-//                     res.json( {
-//                         token: token
-//                     } );
-//                 }
-//              else {
-//             res.send( 'wrong email or password' );
-//         }
-//     } )
-// }
-//
-// } )
-    Partner.findOne({"email": email}).then(function(partnerReturned){
-        console.log(partnerReturned, 'partnerReturned');
+    Partner.find({"email": email}).then(function(partnerReturned){
+        // console.log(partnerReturned, 'partnerReturned');
         if(partnerReturned){
-            console.log('this person returned');
-            bcrypt.compare(password, partnerReturned.password, function(err, response){
+            console.log('this person returned', partnerReturned[0]);
+            bcrypt.compare(password, partnerReturned[0].password, function(err, response){
                 if(response){
-                    var token = jwt.sign({id:player.id}, (process.env.JWT_SECRET));
-                    res.json({token:token});
+                    console.log('there was a response from bcrypt');
+                    var token = jwt.sign({id:partnerReturned[0].id}, "booyah")
+                    // res.json({token:token});
+                    Referral.update({leadEmail: req.body.leadEmail}, {$set: {referrerEmail: req.body.email}},
+                    function(err, returned){
+                        console.log(returned, 'returned referral from login route');
+                        res.json(
+                            {email: req.body.email,
+                            token: token
+                        })
+                    })
                 }else{
                     console.log('wrong email or password');
                     res.send('wrong email or password')
@@ -77,6 +76,64 @@ router.post('/api/partners/login', function(req,res){
     })
 }
 });
+
+
+
+
+
+//create a new user account and issue a token
+router.post( '/api/signup', function( req, res ) {
+    console.log( req.body, 'req.body from /signup post route' );
+    let partner;
+    let errors = [];
+    if ( !req.body.email ) {
+        errors.push( "Email can't be blank" )
+    };
+    if ( !req.body.password ) {
+        errors.push( "Password can't be blank" )
+    };
+    if ( errors.length ) {
+        console.log( errors );
+        res.status( 422 ).json( {
+            errors: errors
+        } )
+    } else {
+        Partner.findOne({email: req.body.email}, function(err,result){
+            if(!result){
+                console.log('inelse');
+                var saltRounds = 4;
+                var passwordHash = bcrypt.hashSync( req.body.password, saltRounds );
+                const newPartner = new Partner({firstName: req.body.firstName,
+                                                lastName: req.body.lastName,
+                                                email: req.body.email,
+                                                phone: req.body.phone,
+                                                stripe: req.body.stripe,
+                                                venmo: req.body.venmo,
+                                                password: passwordHash
+                                            });
+                newPartner.save(function(err, partnerInserted){
+                    // console.log(partnerInserted, 'partnerInserted');
+                    partner = partnerInserted;
+                    var token = jwt.sign({id:partner.id}, "booyah")
+                    Referral.update({leadEmail: req.body.leadEmail}, {$set: {referrerEmail: partner.email}},
+                    function(err, returned){
+                        res.json(
+                            {email: partner.email,
+                            token: token
+                        })
+                    })
+                })
+            }else{
+                res.status( 422 ).json( )
+            }
+        })
+    }
+});
+
+
+
+
+
 //get all partner info and that partner's referrals
 router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
     let partnerEmail = req.params.partner_email;
@@ -88,14 +145,14 @@ router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
     }).then(function(returnedPartner) {
         console.log(returnedPartner, 'returnedPartner');
         allPartnerReferralInfo.push(returnedPartner[0])
-        Referral.find({
-            referrerEmail: partnerEmail
-        }).then(function(referralsReturned) {
-            // console.log(referralsReturned);
-            allPartnerReferralInfo.push(referralsReturned);
-            console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
-            res.send(allPartnerReferralInfo)
-        })
+        .then(Referral.find({
+                referrerEmail: partnerEmail
+            }).then(function(referralsReturned) {
+                console.log(referralsReturned, 'referralsReturned');
+                allPartnerReferralInfo.push(referralsReturned);
+                console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
+                res.send(allPartnerReferralInfo)
+            }))
     })
 }
 )
@@ -115,8 +172,10 @@ router.post('/api/referrals', function(req, res){
     let referral = req.body;
     console.log(referral, 'req.body referral from post route');
     let newReferral = new Referral(referral);
-    newReferral.save(function(referralInserted){
-        res.json(referralInserted)
+    newReferral.save(function(err, newReferral){
+        console.log(err, 'error');
+        console.log(newReferral, 'newReferral');
+        res.json(newReferral)
     //    res.end();
 });
 });
@@ -126,30 +185,19 @@ router.get( '/verify', function( req, res ) {
     if ( req.headers.authorization ) {
         const token = req.headers.authorization.split( ' ' )[ 1 ];
         console.log( token, 'token from /verify route' );
-        const payload = jwt.verify( token, ( process.env.JWT_SECRET ) );
+        const payload = jwt.verify( token, "booyah" );
         console.log( payload, 'payload from /verify route' );
-        // knex( 'players' ).where( {
-        //     id: payload.id
-        // } ).first().then( function( user ) {
-        //     if ( user ) {
-        //         // console.log( user, 'user from /verify route' );
-        //         res.json( {
-        //             id: user.id,
-        //             username: user.username,
-        //             first_name: user.first_name,
-        //             last_name: user.last_name
-        //         } )
-        //     } else {
-        //         res.status( 403 ).json( {
-        //             error: "Invalid ID"
-        //         } )
-        //     }
-        // } )
-        //
-        //
-        //
-        // Partners.find(id:payload.id)
-        //
+
+        Partner.find({_id: payload.id}).then(function(returnedPartner){
+            console.log(returnedPartner, 'returnedPartner');
+            if(returnedPartner[0]){
+                console.log( returnedPartner[0], 'partner from /verify route' );
+                   res.json( {
+                       id: returnedPartner[0].id,
+                       email: returnedPartner[0].email,
+                 } )
+            }
+        })
     } else {
         res.status( 403 ).json( {
             error: "No token"

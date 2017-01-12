@@ -39,7 +39,8 @@ var ReferralSchema = new Schema({
     },
 
     conversionDate: {
-        type: Date
+        type: Date,
+        default: new Date("<2000-01-01>")
     },
 
     totalAmountPaidForReferral: {

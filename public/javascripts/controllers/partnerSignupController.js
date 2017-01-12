@@ -3,19 +3,21 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
     $scope.view = {};
     $scope.view.booyah = 'booyah from partner signup controller';
 
-    $scope.view.newPartner = {};
+    $scope.view.partner = {};
 
     $scope.view.platforms = ["Venmo", "Stripe"];
+    $scope.view.partner.leadEmail = $window.localStorage.getItem('leadEmail');
 
-
-    $scope.view.submitClicked = function(event){
+    $scope.view.submitPartner = function(event){
         event.preventDefault();
-        console.log($scope.view.newPartner, 'scope.view.newPartner');
-        $window.localStorage.setItem('email', $scope.view.newPartner.email);
-        $http.post('http://localhost:9090/editor/searchUsers',$scope.view.newPartner)
-        .then(function(){
+        // console.log($scope.view.partner, 'scope.view.newPartner');
+        $window.localStorage.setItem('email', $scope.view.partner.email);
+        $http.post('/api/signup',$scope.view.partner)
+        .then(function(response){
             console.log('post route working');
-            // $location.path('/table')
+            console.log(response, 'response from signup');
+            $window.localStorage.setItem('token', response.data.token);
+            $location.path('/table')
         })
     }
 

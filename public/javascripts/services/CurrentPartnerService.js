@@ -1,11 +1,8 @@
-app.factory('Partner', ['$http', '$location,' function($http, $location) {
+app.service('CurrentPartner', ['$http', '$location', function($http, $location) {
 
-    return {
-
-        get: function($http, $location) {
+    return  function() {
           if (localStorage.getItem('token')) {
-            console.log(localStorage.getItem('token'),
-              'token from config resolve');
+            console.log(localStorage.getItem('token'),'token from config resolve');
             const config = {
               headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem(
@@ -14,6 +11,7 @@ app.factory('Partner', ['$http', '$location,' function($http, $location) {
             };
             return $http.get('/verify', config)
               .then(function(response) {
+                  console.log(response.data, 'response.data from /verify dot then');
                 return response.data;
               })
 
@@ -22,8 +20,9 @@ app.factory('Partner', ['$http', '$location,' function($http, $location) {
               localStorage.clear();
               return null;
             });
-          }
+        }else{
+                $location.path('/')
         }
-    }
+        }
 
 }]);;
