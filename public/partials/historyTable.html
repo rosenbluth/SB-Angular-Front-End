@@ -23,11 +23,11 @@
                 <td>{{referral.leadEmail}}</td>
                 <td>{{amountToDate}}</td>
                 <td>{{date}}</td>
-                <td>{{payout}}</td>
+                <td>{{referral.bonusAmount}}</td>
                 <td>{{referral.activeReferral?'Active':'InActive'}}</td>
                 <td>
                     <form ng-submit=convertClicked(referral)>
-                        <p class="switch">
+                        <span class="switch in_block">
 
                                <label>
                                  Starter
@@ -41,9 +41,9 @@
                                  <span class="lever"></span>
 
                                </label>
-                        </p>
+                        </span>
 
-                        <input type="submit" value='Convert' class= 'waves-effect waves-light btn' >
+                        <input type="submit" value='Convert' class= 'waves-effect waves-light btn limit_width' >
 
                         <!-- <a  href="" ng-show='editShow' ng-click='updateSite(site)'>Update Site</a> -->
 

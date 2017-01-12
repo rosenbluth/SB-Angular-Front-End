@@ -20,6 +20,8 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
         $http.post('/api/referrals/convert', $scope.data[referralIndex]).then((response) => {
             console.log(response, 'response in convertClicked dot then');
             $scope.data[referralIndex] = response.data;
+            $scope.data[referralIndex].conversionDate = parseInt($scope.data[referralIndex].conversionDate.replace(/[_-]/g, ""))
+            console.log($scope.data[referralIndex].conversionDate, 'newDate');
         })
 
         }
@@ -70,24 +72,30 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
     //             updates the referral's resultedInStarter or resultedInGrowth booleans to true
     //             and sets the referal's conversionDate
     //     in the dot then:
-    // --this table controller's $scope.___referral# $scope.data array___.activeStarter or .activeGrowth gets set to true, and when it does:
-    // --this table controller's $scope.___referral# $scope.data array___.totalAmountPaidForReferral will automatically be either 149 or 399, based on above property
-    // --this table controller's $scope.___referral# $scope.data array___.bonusAmount will automatically be either 149 or 399, based on above property
+    // -- $scope.data[referralIndex].activeStarter or .activeGrowth gets set to true, and when it does:
+    // -- $scope.data[referralIndex].totalAmountPaidForReferral will automatically be either 149 or 399, based on above property
+    // -- $scope.data[referralIndex].bonusAmount will automatically be either 149 or 399, based on above property
     //
-    // this table controller's $scope.___whatever referral in $scope.data array___.convertedDate will be response.data.conversionDate (a string)
-    // --**** this table controller's $scope.___referral# $scope.data array___.numMonthsPassedSinceConversion will be set to 0
+    //  $scope.data[referralIndex].convertedDate will be response.data.conversionDate (a string)
+    // --****  $scope.data[referralIndex].numMonthsPassedSinceConversion will be set to 0
     //     *** numMonthsPassedSinceConversion will have to increase/auto update based on page rendering with a momentJS
     //     function that subtracts today's date minus conversionDate. if > 12 months, .activeStarter or .activeGrowth = false
     //     this property also keeps track of a $scope property
+
     //
-    // // --this table controller's $scope.___referral# $scope.data array___.totalNumOfQuarterlyPayouts will be 0
-    // --this table controller's $scope.___referral# $scope.data array___.amountMadeTowardNextPayout will be :
+    // // -- $scope.data[referralIndex].totalNumOfQuarterlyPayouts will be 0
+    // -- $scope.data[referralIndex].amountMadeTowardNextPayout will be :
     //     if
     //     numMonthsPassedSinceConversion <=3 it will include the bonusAmount
     //
     //     ALSO, for ALL ADD:
-    //  MomentJS math: last payout date minus todays date (will return a number of months since last payout date) >= 3
-    //     that MomentJS number * monthlyStarter or *monthlyGrowth
+    //  MomentJS math: last payout date minus todays date (will return a number of months since last payout date)
+            if (numMonthsPassedSinceConversion <= 3){ it will include the bonusAmount; totalNumOfQuarterlyPayouts=0  }
+            if  (4 <= numMonthsPassedSinceConversion <= 6) { totalNumOfQuarterlyPayouts=1; (numMonthsPassedSinceConversion - totalNumOfQuarterlyPayouts * 3) * monthlyStarter or * monthlyGrowth}
+            if ( 7 <= numMonthsPassedSinceConversion <= 9) { totalNumOfQuarterlyPayouts=2;   }
+            if  (10 <= numMonthsPassedSinceConversion <=12) { totalNumOfQuarterlyPayouts=3;    }
+            else change them to inactive
+    //    *****MAYBE need to call scope.apply at the end of function here, not sure
 
 
 

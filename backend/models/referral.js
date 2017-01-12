@@ -43,12 +43,11 @@ var ReferralSchema = new Schema({
     },
 
     bonusAmount:{
-        type: Number,
-        default:0
+        type: Number
     },
 
     conversionDate: {
-        type: Date,
+        type: String
     },
 
     totalAmountPaidForReferral: {
@@ -82,7 +81,7 @@ var ReferralSchema = new Schema({
 
     activeReferral: {
         type: Boolean,
-        default: true
+        default: false
     }
 
 });
