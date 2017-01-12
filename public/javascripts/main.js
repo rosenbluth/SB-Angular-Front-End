@@ -31,20 +31,20 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'partials/historyTable.html',
             controller: 'tableController',
             resolve: {
-                data: function (CurrentPartner) {
-                  console.log(CurrentPartner(), 'CurrentPartner invoked');
-                return CurrentPartner();
-              }
-          }
+                data: function(CurrentPartner) {
+                    console.log(CurrentPartner(), 'CurrentPartner invoked');
+                    return CurrentPartner();
+                }
+            }
         })
 
         .when('/submitreferral', {
             templateUrl: 'partials/loggedInForm.html',
             controller: 'loggedInFormController',
             resolve: {
-              data: function (CurrentPartner) {
-                return CurrentPartner();
-              }
+                data: function(CurrentPartner) {
+                    return CurrentPartner();
+                }
             }
         })
 
@@ -52,10 +52,10 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: 'partials/loggedInReferralConfirm.html',
             controller: 'loggedInReferralConfirmController',
             resolve: {
-                  data: function (CurrentPartner) {
+                data: function(CurrentPartner) {
                     return CurrentPartner();
-                  }
                 }
+            }
         })
         .when('/navbar', {
             templateUrl: 'partials/navbar.html',

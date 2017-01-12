@@ -1,0 +1,53 @@
+<ng-include src="'partials/navbar.html'"></ng-include>
+
+
+<h5>Non-Converted Referrals</h5>
+<div class="card">
+    <table class="striped responsive-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="referral in data">
+                <td>{{referral.leadName}}</td>
+                <td>{{referral.leadCompanyName}}</td>
+                <td>{{referral.leadEmail}}</td>
+                <td>{{referral.leadPhone}}</td>
+                <td>
+                    <form ng-submit=convertClicked(referral)>
+                        <p class="switch">
+
+                            <label>
+                                 Starter
+                                 <input type="checkbox" ng-model=referral.starterConverted>
+                                 <span class="lever"></span>
+
+                               </label>
+                            <label>
+                                 Growth
+                                 <input type="checkbox" ng-model=referral.growthConverted>
+                                 <span class="lever"></span>
+
+                               </label>
+                        </p>
+
+                        <input type="submit" value='Convert' class='waves-effect waves-light btn'>
+                    </form>
+
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
+<script type='text/javascript' src='app.js'></script>
