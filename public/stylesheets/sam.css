@@ -103,9 +103,18 @@ body {
 
 .lowerIconsFooter{
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
+  /*justify-content: center;*/
+  /*padding-left: 10px;*/
 }
 
+.paddingBottom{
+  padding-bottom: 30px;
+}
+
+.leftPadIt{
+  padding-left: 160px;
+}
 .lowerFooterText{
   display: flex;
   justify-content: center;
