@@ -34,13 +34,14 @@ var ReferralSchema = new Schema({
         type: String
     },
 
-    resultedInConversion: {
-        type: Boolean
+    resultedInStarterConversion: {
+        type: Boolean,
+        default: false
     },
 
-    conversionDate: {
-        type: Date,
-        default: new Date("<2000-01-01>")
+    resultedInGrowthConversion: {
+        type: Boolean,
+        default: false
     },
 
     totalAmountPaidForReferral: {
