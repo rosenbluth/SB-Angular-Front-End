@@ -1,3 +1,4 @@
+
 app.controller('tableController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
 
     $scope.logout = LogOutService;
@@ -5,16 +6,44 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
     $scope.view = {};
     $scope.view.booyah = 'booyah from table controller';
     $scope.currentUser = {};
+    $scope.view.conversionTypes = ['starter', 'growth'];
+
+
+
+    $scope.convertClicked = function(referral){
+        confirm('You are about to convert a referral to active payout. Are you sure?')
+        var referralIndex = this.$index;
+
+        console.log(referral, 'referral argument');
+        $('select').material_select();
+        console.log($scope.data[referralIndex]);
+        $http.post('/api/referrals/convert', $scope.data[referralIndex]).then((response) => {
+            console.log(response, 'response in convertClicked dot then');
+            $scope.data[referralIndex] = response.data;
+        })
+
+        }
+
+
 
 
     CurrentPartner().then(function(partnerReturned){
         $scope.currentUser = partnerReturned;
-        $http.get('/api/partners/' +$scope.currentUser.email + '/referrals').then(function(response) {
+        if($scope.currentUser.email === "cat@cat1.com"){
+            $scope.admin = true
+            $http.get('/api/referrals').then(function(response){
+                // console.log(response.data, 'response.data admin');
+                $scope.data = response.data;
+                console.log($scope.data);
+            })
+        }
+        else{$http.get('/api/partners/' + $scope.currentUser.email + '/referrals').then(function(response) {
            //need to plug these values in to table
            console.log(response.data[1], 'asdasd response from table cont');
            $scope.data = response.data[1]; //array of referrals for this partner
            return response.data;
        });
+    }
     })
 
 

@@ -13,6 +13,7 @@
                 <th>Next Payout Date</th>
                 <th>Next Payout</th>
                 <th>Status</th>
+                <th>Converted?</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +25,35 @@
                 <td>{{date}}</td>
                 <td>{{payout}}</td>
                 <td>{{referral.activeReferral?'Active':'InActive'}}</td>
+                <td>
+                    <form ng-submit=convertClicked(referral)>
+                        <p class="switch">
+
+                               <label>
+                                 Starter
+                                 <input type="checkbox" ng-model=referral.starterConverted>
+                                 <span class="lever"></span>
+
+                               </label>
+                               <label>
+                                 Growth
+                                 <input type="checkbox" ng-model=referral.growthConverted>
+                                 <span class="lever"></span>
+
+                               </label>
+                        </p>
+
+                        <input type="submit" value='Convert' class= 'waves-effect waves-light btn' >
+
+                        <!-- <a  href="" ng-show='editShow' ng-click='updateSite(site)'>Update Site</a> -->
+
+
+
+                </form>
+
+
+
+                </td>
             </tr>
         </tbody>
     </table>

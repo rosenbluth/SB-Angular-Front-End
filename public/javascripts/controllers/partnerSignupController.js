@@ -10,7 +10,6 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
 
     $scope.view.submitPartner = function(event){
         event.preventDefault();
-        // console.log($scope.view.partner, 'scope.view.newPartner');
         $window.localStorage.setItem('email', $scope.view.partner.email);
         $http.post('/api/partners/signup',$scope.view.partner)
         .then(function(response){
