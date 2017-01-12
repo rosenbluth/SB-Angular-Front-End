@@ -1,12 +1,10 @@
-<!-- <p>{{view.booyah}}</p>
-<p>BOOYAH from home controller</p> -->
 <ng-include src="'partials/loggedOutNavbar.html'"></ng-include>
 
 
 <div class="container">
     <div class="row">
         <div class="col s12">
-            <h1 class="center-align">Sandbox Referrals Program</h1>
+            <h1 class="center-align">SandBox Commerce Partner Program</h1>
         </div>
     </div>
 
@@ -16,24 +14,28 @@
 
     <div class="row">
         <div class="col s12">
-            <!-- <button ng-click=view.skipToLogin($event) class="waves-effect waves-light btn ">View My Referrals</button> -->
             <div class="myMargin">
-                <h3 class="center-align">Duis aute irure dolor in reprehenderit in voluptate</h3>
+                <h3 class="center-align">Working together to make mobile commerce</h3>
             </div>
         </div>
         <div class="col s12">
-            <h3 class="center-align">Lorem ipsum dolor</h3>
+            <h3 class="center-align">affordable and profitable for retailers.</h3>
         </div>
     </div>
-    <!--
-  <div class="row">
-  </div> -->
 
     <div class="row">
         <div class="col s12">
-            <p class="center-align">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
-                quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-                numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+            <strong><p class="center-align">Sandbox Commerce is the only way to seamlessly turn an existing eCommerce store into a smartphone app. Mobile commerce is growing far faster than any other segment within the retail sector:</p></strong>
+            <br>
+            <em><p class="center-align">54% of mobile transactions take place within retail apps</p></em>
+            <em><p class="center-align">Apps convert at 3x the rate of mobile web</p></em>
+            <em><p class="center-align">The average order value of an app is 40% higher than mobile web.</p></em>
+            <em><p class="center-align">None of the major eCommerce platforms (Shopify, Etsy, or BigCommerce) have a workable app strategy for individual merchants.</p></em>
+            <br>
+            <strong><p class="center-align">SandBox Commerce allows any retailer to build and deploy their app in less than a week. They then leverage their mobile commerce expertise to offer turn-key solutions and services to engage, market, manage, and grow the app.</p></strong>
+            <strong><p class="center-align">Help us bring this technology to retailers worldwide and get rewarded for your efforts. Not only do you get to re-engage your current customers with a new offering but you get to start offering a mobile app offering for your new customers
+                with no additional resources required. You also get paid each time you bring a client to SandBox Commerce. </p></strong>
+            <strong><p class="center-align">Submit your first referral today and get your journey started as a SandBox Commerce Partner.</p></strong>
         </div>
     </div>
 </div>
@@ -49,12 +51,12 @@
                     <div class="cardContent">
 
                         <form ng-submit="view.submitReferralClicked($event)" name='form'>
-                            <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" />
-                            <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" />
-                            <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" />
-                            <input ng-model="view.newReferral.leadPhone" placeholder="Referral's Phone" type="text" />
+                            <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" id="textarea1" />
+                            <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" id="textarea1" />
+                            <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" id="textarea1" />
+                            <input ng-model="view.newReferral.leadPhone" placeholder="Referral's Phone" type="text" id="textarea1" />
                             <div class="cardContentButtons">
-                                <button class="submitBtn btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                                <button class="submitBtn btn waves-effect waves-light amber darken-4" type="submit" name="action">Submit</button>
                             </div>
                         </form>
                     </div>
