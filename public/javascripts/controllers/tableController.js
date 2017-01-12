@@ -69,10 +69,11 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
     // if ryan clicks convert, this controller makes a new Date(), then makes a
     // post request to 'api/referrals/converted' route
     // that route: finds the referral based on id
-    //             updates the referral's resultedInStarter or resultedInGrowth booleans to true
+    //             updates the referral's starterConverted or growthConverted booleans to true
+    //              updates activeReferral to true
     //             and sets the referal's conversionDate
     //     in the dot then:
-    // -- $scope.data[referralIndex].activeStarter or .activeGrowth gets set to true, and when it does:
+    // -- $scope.data[referralIndex].starterConverted or .growthConverted gets set to true, and when it does:
     // -- $scope.data[referralIndex].totalAmountPaidForReferral will automatically be either 149 or 399, based on above property
     // -- $scope.data[referralIndex].bonusAmount will automatically be either 149 or 399, based on above property
     //
@@ -90,11 +91,20 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
     //
     //     ALSO, for ALL ADD:
     //  MomentJS math: last payout date minus todays date (will return a number of months since last payout date)
-            if (numMonthsPassedSinceConversion <= 3){ it will include the bonusAmount; totalNumOfQuarterlyPayouts=0  }
-            if  (4 <= numMonthsPassedSinceConversion <= 6) { totalNumOfQuarterlyPayouts=1; (numMonthsPassedSinceConversion - totalNumOfQuarterlyPayouts * 3) * monthlyStarter or * monthlyGrowth}
-            if ( 7 <= numMonthsPassedSinceConversion <= 9) { totalNumOfQuarterlyPayouts=2;   }
-            if  (10 <= numMonthsPassedSinceConversion <=12) { totalNumOfQuarterlyPayouts=3;    }
-            else change them to inactive
+            // if (numMonthsPassedSinceConversion <= 3)    {  totalAmountPaidForReferral AND amountMadeTowardNextPayout both
+            //                                             = (numMonthsPassedSinceConversion  * monthlyStarter or * monthlyGrowth) + bonusAmount }
+            //
+            // if  (4 <= numMonthsPassedSinceConversion <= 6) { totalNumOfQuarterlyPayouts=1;
+            //                                                 amountMadeTowardNextPayout = (numMonthsPassedSinceConversion - totalNumOfQuarterlyPayouts * 3) * monthlyStarter or * monthlyGrowth; totalAmountPaidForReferral +=  amountMadeTowardNextPayout}
+            //
+            // if ( 7 <= numMonthsPassedSinceConversion <= 9) { totalNumOfQuarterlyPayouts=2;
+            //                                                 amountMadeTowardNextPayout = (numMonthsPassedSinceConversion - totalNumOfQuarterlyPayouts * 3) * monthlyStarter or * monthlyGrowth; totalAmountPaidForReferral  +=  amountMadeTowardNextPayout}
+            //
+            // if  (10 <= numMonthsPassedSinceConversion <=12) { totalNumOfQuarterlyPayouts=3;
+            //                                                 amountMadeTowardNextPayout = (numMonthsPassedSinceConversion - totalNumOfQuarterlyPayouts * 3) * monthlyStarter or * monthlyGrowth;
+            //                                                 totalAmountPaidForReferral +=  amountMadeTowardNextPayout }
+            //
+            // else change them to inactive
     //    *****MAYBE need to call scope.apply at the end of function here, not sure
 
 
