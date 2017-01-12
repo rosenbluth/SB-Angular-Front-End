@@ -78,6 +78,13 @@ body {
     position: relative;
     justify-content: center;
 }
+
+.centerAbsolute{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
 .myMargin{
   margin-bottom: -35px;
 }
@@ -92,6 +99,18 @@ body {
     padding: 2rem;
     top: 3rem;
     justify-content: center;
+}
+
+.lowerIconsFooter{
+  display: flex;
+  justify-content:space-between;
+}
+
+.lowerFooterText{
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
 }
 
 .striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
@@ -129,6 +148,10 @@ button:focus {
     background-color: #f9a34c;
 }
 
+.topBlock{
+  display: flex;
+
+}
 #textarea1:focus {
     border-bottom: 1px solid #f9a34c;
     box-shadow: 0 1px 0 0 #f9a34c;
