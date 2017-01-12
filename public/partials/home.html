@@ -25,7 +25,8 @@
 
     <div class="row">
         <div class="col s12">
-            <strong><p class="center-align">Sandbox Commerce is the only way to seamlessly turn an existing eCommerce store into a smartphone app. Mobile commerce is growing far faster than any other segment within the retail sector:</p></strong>
+            <strong><p class="center-align">Sandbox Commerce is the only way to seamlessly turn an existing eCommerce store into a smartphone app.
+                Mobile commerce is growing far faster than any other segment within the retail sector:</p></strong>
             <br>
             <em><p class="center-align">54% of mobile transactions take place within retail apps</p></em>
             <em><p class="center-align">Apps convert at 3x the rate of mobile web</p></em>
@@ -43,20 +44,23 @@
 <!-- the form card -->
 
 
-<div class="myContainer">
+<div class="myContainer bottom-margin">
     <div class="row">
         <div class="col s12 m8 l8 offset-m2 offset-l2">
             <div class="card">
                 <div class="input-field">
-                    <div class="cardContent">
+                    <div class="cardContent bottom-spacing-focus">
 
                         <form ng-submit="view.submitReferralClicked($event)" name='form'>
+                            <div class='topCenter please neg-top'>
+                                <h6><p class='center-me'>Add your referral's information below.</p></h6>
+                            </div>
                             <input ng-model="view.newReferral.leadName" placeholder="Referral's First and Last Name" type="text" id="textarea1" />
                             <input ng-model="view.newReferral.leadCompanyName" placeholder="Referral's Company Name" type="text" id="textarea1" />
                             <input ng-model="view.newReferral.leadEmail" placeholder="Referral's E-mail" type="text" id="textarea1" />
                             <input ng-model="view.newReferral.leadPhone" placeholder="Referral's Phone" type="text" id="textarea1" />
                             <div class="cardContentButtons">
-                                <button class="submitBtn btn waves-effect waves-light amber darken-4" type="submit" name="action">Submit</button>
+                                <button class="submitBtn btn waves-effect waves-light amber darken-4 top-hat" type="submit" name="action">Submit</button>
                             </div>
                         </form>
                     </div>
