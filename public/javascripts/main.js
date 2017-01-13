@@ -38,6 +38,30 @@ app.config(function($routeProvider, $locationProvider) {
             }
         })
 
+        .when('/admin', {
+            templateUrl: 'partials/tableAdminConverted.html',
+            controller: 'tableController',
+            resolve: {
+                data: function(CurrentPartner) {
+                    console.log(CurrentPartner(), 'CurrentPartner invoked');
+                    return CurrentPartner();
+                }
+            }
+        })
+
+        .when('/admin/leads', {
+            templateUrl: 'partials/tableAdminNonConverted.html',
+            controller: 'tableController',
+            resolve: {
+                data: function(CurrentPartner) {
+                    console.log(CurrentPartner(), 'CurrentPartner invoked');
+                    return CurrentPartner();
+                }
+            }
+        })
+
+
+
         .when('/submitreferral', {
             templateUrl: 'partials/loggedInForm.html',
             controller: 'loggedInFormController',
@@ -60,5 +84,5 @@ app.config(function($routeProvider, $locationProvider) {
         .when('/navbar', {
             templateUrl: 'partials/navbar.html',
             controller: 'loggedInReferralConfirmController'
-        })
+        });
 });

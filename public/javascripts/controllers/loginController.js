@@ -12,17 +12,21 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', 'C
         console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
         $http.post('/api/partners/login', $scope.view.loginInfo)
-        .then(function(response){
-            $window.localStorage.setItem('token', response.data.token)
-        })
-        .then(function(){
-            $location.path('/table')
-        })
+        .then(function(response){ console.log(response, 'response from login.then');
+            $window.localStorage.setItem('token', response.data.token);
+            if(response.data.email = 'sally@sally.com'){
+                $location.path('/admin');
+            }
+            else{
+                $location.path('/table');
+            }
+        });
 
 
 
 
-    }
+
+    };
 
 
 }]);

@@ -19,22 +19,20 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="referral in data">
-                <td>{{referral.leadName}}</td>
-                <td>{{referral.leadCompanyName}}</td>
-                <td>{{referral.leadEmail}}</td>
-                <td>{{amountToDate}}</td>
-                <td>{{date}}</td>
-                <td>{{payout}}</td>
-                <td>{{referral.activeReferral?'Active':'InActive'}}</td>
-                </td>
+
+            <tr ng-repeat="referral in currentUser.data">
+                <td ng-if='referral.activeReferral'>{{referral.leadName}}</td>
+                <td ng-if='referral.activeReferral'>{{referral.leadCompanyName}}</td>
+                <td ng-if='referral.activeReferral'>{{referral.leadEmail}}</td>
+                <td ng-if='referral.activeReferral'>{{amountToDate}}</td>
+                <td ng-if='referral.activeReferral'>{{date}}</td>
+                <td ng-if='referral.activeReferral'>{{payout}}</td>
+                <td ng-if='referral.activeReferral'>{{referral.activeReferral?'Active':'InActive'}}</td>
+              </td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<ng-include src="'partials/footer.html'"></ng-include>
-
 
 <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
 <script type='text/javascript' src='app.js'></script>

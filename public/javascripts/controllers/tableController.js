@@ -15,33 +15,32 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
 
         console.log(referral, 'referral argument');
         $('select').material_select();
-        console.log($scope.data[referralIndex]);
-        $http.post('/api/referrals/convert', $scope.data[referralIndex]).then((response) => {
+        console.log($scope.currentUser.data[referralIndex]);
+        $http.post('/api/referrals/convert', $scope.currentUser.data[referralIndex]).then((response) => {
             console.log(response, 'response in convertClicked dot then');
-            $scope.data[referralIndex] = response.data;
-            $scope.data[referralIndex].conversionDate = parseInt($scope.data[referralIndex].conversionDate.replace(/[_-]/g, ""))
-            console.log($scope.data[referralIndex].conversionDate, 'newDate');
+            $scope.currentUser.data[referralIndex] = response.data;
+            $scope.currentUser.data[referralIndex].conversionDate = parseInt($scope.currentUser.data[referralIndex].conversionDate.replace(/[_-]/g, ""))
+            console.log($scope.currentUser.data[referralIndex].conversionDate, 'newDate');
+            console.log(moment().from($scope.currentUser.data[referralIndex].conversionDate),"HEY HEY");
         })
 
     }
-
-
-
+      // moment().from($scope.currentUser.data[referralIndex].conversionDate)
 
     CurrentPartner().then(function(partnerReturned) {
         $scope.currentUser = partnerReturned;
-        if ($scope.currentUser.email === "cat@cat1.com") {
-            $scope.admin = true
+        if ($scope.currentUser.email === "sally@sally.com") {
+            $scope.currentUser.admin = true
             $http.get('/api/referrals').then(function(response) {
                 // console.log(response.data, 'response.data admin');
-                $scope.data = response.data;
-                console.log($scope.data);
+                $scope.currentUser.data = response.data;
+                console.log($scope.currentUser.data);
             })
         } else {
             $http.get('/api/partners/' + $scope.currentUser.email + '/referrals').then(function(response) {
                 //need to plug these values in to table
                 console.log(response.data[1], 'asdasd response from table cont');
-                $scope.data = response.data[1]; //array of referrals for this partner
+                $scope.currentUser.data = response.data[1]; //array of referrals for this partner
                 return response.data;
             });
         }
@@ -72,19 +71,19 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
     //                updates activeReferral to true
     //               and sets the referal's conversionDate
     //       in the dot then:
-    //   -- $scope.data[referralIndex].starterConverted or .growthConverted gets set to true, and when it does:
-    //   -- $scope.data[referralIndex].totalAmountPaidForReferral will automatically be either 149 or 399, based on above property
-    //   -- $scope.data[referralIndex].bonusAmount will automatically be either 149 or 399, based on above property DONE DONE DONE DONE DONE DONE
+    //   -- $scope.currentUser.data[referralIndex].starterConverted or .growthConverted gets set to true, and when it does:
+    //   -- $scope.currentUser.data[referralIndex].totalAmountPaidForReferral will automatically be either 149 or 399, based on above property
+    //   -- $scope.currentUser.data[referralIndex].bonusAmount will automatically be either 149 or 399, based on above property DONE DONE DONE DONE DONE DONE
 
-    //  $scope.data[referralIndex].convertedDate will be response.data.conversionDate (a string)
-    // --****  $scope.data[referralIndex].numMonthsPassedSinceConversion will be set to 0
+    //  $scope.currentUser.data[referralIndex].convertedDate will be response.data.conversionDate (a string)
+    // --****  $scope.currentUser.data[referralIndex].numMonthsPassedSinceConversion will be set to 0
     //     *** numMonthsPassedSinceConversion will have to increase/auto update based on page rendering with a momentJS
     //     function that subtracts today's date minus conversionDate. if > 12 months, .activeStarter or .activeGrowth = false
     //     this property also keeps track of a $scope property
     //
     //
-    // // -- $scope.data[referralIndex].totalNumOfQuarterlyPayouts will be 0
-    // -- $scope.data[referralIndex].amountMadeTowardNextPayout will be :
+    // // -- $scope.currentUser.data[referralIndex].totalNumOfQuarterlyPayouts will be 0
+    // -- $scope.currentUser.data[referralIndex].amountMadeTowardNextPayout will be :
     //     if
     //     numMonthsPassedSinceConversion <=3 it will include the bonusAmount
     //
