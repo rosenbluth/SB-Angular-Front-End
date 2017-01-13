@@ -48,9 +48,10 @@ The website is usable on devices of all sizes, and improvements are constantly b
 ***
 
 ## Team
-<img src="https://avatars3.githubusercontent.com/u/19772151?v=3&s=400" width="200" height="200"/>
+<img src="public/images/team/squareJeannie.jpg" width="200" height="200"/>
 <img src="https://avatars2.githubusercontent.com/u/19808088?v=3&s=400" width="200" height="200"/>
 <img src="https://avatars3.githubusercontent.com/u/19141223?v=3&s=460" width="200" height="200"/>
-<!-- [![Jeannie Yamakawa](https://avatars3.githubusercontent.com/u/19772151?v=3&s=400)](https://github.com/JeannieYamakawa)  | [![Sam Rosenbluth](https://avatars2.githubusercontent.com/u/19808088?v=3&s=400)](https://github.com/rosenbluth)  | [![Frank Gonzalez](https://avatars3.githubusercontent.com/u/19141223?v=3&s=460)](https://github.com/Fgonzalez512) -->
+
+
 ---|---
 [Jeannie Yamakawa ](https://github.com/JeannieYamakawa) |[Sam Rosenbluth](https://github.com/rosenbluth) |[Frank Gonzalez](https://github.com/Fgonzalez512)
