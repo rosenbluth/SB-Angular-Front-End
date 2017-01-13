@@ -21,11 +21,11 @@ app.controller('tableController', ['$scope', '$http', '$location', '$window', 'C
             $scope.currentUser.data[referralIndex] = response.data;
             $scope.currentUser.data[referralIndex].conversionDate = parseInt($scope.currentUser.data[referralIndex].conversionDate.replace(/[_-]/g, ""))
             console.log($scope.currentUser.data[referralIndex].conversionDate, 'newDate');
-            console.log(moment().from($scope.currentUser.data[referralIndex].conversionDate),"HEY HEY");
+            console.log(moment().from($scope.currentUser.data[referralIndex].conversionDate), "HEY HEY");
         })
 
     }
-      // moment().from($scope.currentUser.data[referralIndex].conversionDate)
+    // moment().from($scope.currentUser.data[referralIndex].conversionDate)
 
     CurrentPartner().then(function(partnerReturned) {
         $scope.currentUser = partnerReturned;
