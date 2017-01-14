@@ -1,4 +1,4 @@
-app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$location', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, CurrentPartner, LogOutService) {
+app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$location', '$window', 'CurrentPartner', 'LogOutService',function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
     $scope.logout = LogOutService;
 
     $scope.view = {};
@@ -7,6 +7,12 @@ app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$locati
     $scope.view.closeClicked = function(event){
         event.preventDefault();
         $location.path('/table')
+        if($window.localStorage.email === 'sally@sally.com'){
+            $location.path('/admin/leads');
+        }
+        else{
+            $location.path('/table');
+        }
     }
     $scope.view.menuFunction = function () {
         var x = document.getElementById("myTopnav");

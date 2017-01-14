@@ -4,7 +4,7 @@
 
 
 <div>
-    <button ng-click='view.convertedViewClick()' class="submitBtn btn waves-effect waves-light amber darken-4 move-rightup" type="" name="action">View Converted</button>
+    <button ng-click='view.convertedViewClick()' class="submitBtn btn waves-effect waves-light amber darken-2 move-rightup" type="" name="action">View Converted</button>
     <h4 class="center-align bolded">Non-Converted Referrals</h4>
 </div>
 
@@ -16,35 +16,33 @@
                 <th>Company</th>
                 <th>Email</th>
                 <th>Phone</th>
+                <!-- <th>Converted?</th> -->
             </tr>
         </thead>
         <tbody>
             <tr ng-repeat="referral in currentUser.data">
-                <td>{{referral.leadName}}</td>
-                <td>{{referral.leadCompanyName}}</td>
-                <td>{{referral.leadEmail}}</td>
-                <td>{{referral.leadPhone}}</td>
-                <td>
-                    <form ng-submit=convertClicked(referral)>
-                        <p class="switch">
-
-                            <label>
+                <td ng-if='!referral.starterConverted && !referral.growthConverted' >{{referral.leadName}}</td>
+                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadCompanyName}}</td>
+                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadEmail}}</td>
+                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadPhone}}</td>
+                <td ng-if='!referral.starterConverted && !referral.growthConverted'>
+                    <form class='make-flex' ng-submit=convertClicked(referral)>
+                        <p class="switch top-down">
+                            <label class='need-margin-b'>
                                  Starter
-                                 <input type="checkbox" ng-model=referral.starterConverted>
+                                 <input  type="checkbox" ng-model=referral.starterConverted>
                                  <span class="lever amber darken-4"></span>
 
-                               </label>
-                            <label>
+                             </label>
+                            <label class='need-margin-t'>
                                  Growth
                                  <input type="checkbox" ng-model=referral.growthConverted>
                                  <span class="lever amber darken-4"></span>
 
-                               </label>
+                             </label>
                         </p>
-
-                        <input type="submit" value='Convert' class='waves-effect waves-light btn amber darken-4'>
+                        <input type="submit" value='Convert' class='waves-effect waves-light btn amber darken-4 slight-down'>
                     </form>
-
 
 
                 </td>

@@ -399,10 +399,31 @@ ul.topnav span.icon {
     margin-top: 45px;
 }
 .move-rightup{
-left:78vw;
-top: 5vh;
+    left:78vw;
+    top: 5vh;
 }
 .bolded{
     font-weight: bold;
     margin-bottom: -5vh;
+}
+.make-flex{
+    display: flex;
+    flex-direction: row;
+}
+.slight-down{
+    margin-top: 2.8vh;
+    margin-left: 1vw;
+}
+td,th {
+  text-align: center;
+}
+.top-down{
+    display: flex;
+    flex-direction: column;
+}
+.need-margin-t{
+    margin-top: 1vh;
+}
+.need-margin-b{
+    margin-bottom: 1vh;
 }
