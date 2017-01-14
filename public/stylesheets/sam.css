@@ -178,6 +178,19 @@ button:focus {
     display: inline-block;
 }
 
+.switch label input[type=checkbox]:checked+.lever {
+    background-color: #ff6f00;
+}
+
+.switch label input[type=checkbox]:checked+.lever:after {
+    background-color: #ff6f00;
+}
+
+#adminButton {
+    display: flex;
+    justify-content: center;
+}
+
 
 /*moblie style*/
 
@@ -378,6 +391,7 @@ ul.topnav span.icon {
     margin-right: 40px;
     margin-bottom: 20px;
 }
-.red-test{
+
+.red-test {
     border: 1px solid red
 }

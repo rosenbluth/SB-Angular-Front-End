@@ -2,9 +2,10 @@
 
 
 <h5 class="center-align">Converted Referrals</h5>
-<div>
+<div class="row" id="adminButton">
     <button ng-click='view.nonConvertedClick()' class="submitBtn btn waves-effect waves-light amber darken-4" type="" name="action">Non-Converted</button>
 </div>
+
 <div class="card">
     <table class="striped responsive-table">
         <thead>
@@ -28,7 +29,7 @@
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{date}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.amountMadeTowardNextPayout | currency}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.activeReferral?'Active':'InActive'}}</td>
-              </td>
+                </td>
             </tr>
         </tbody>
     </table>
