@@ -3,7 +3,7 @@
 
 <h5 class="center-align">Converted Referrals</h5>
 <div>
-    <button class="submitBtn btn waves-effect waves-light amber darken-4" type="" name="action">Non-Converted</button>
+    <button ng-click='view.nonConvertedClick()' class="submitBtn btn waves-effect waves-light amber darken-4" type="" name="action">Non-Converted</button>
 </div>
 <div class="card">
     <table class="striped responsive-table">
@@ -21,13 +21,13 @@
         <tbody>
 
             <tr ng-repeat="referral in currentUser.data">
-                <td ng-if='referral.activeReferral'>{{referral.leadName}}</td>
-                <td ng-if='referral.activeReferral'>{{referral.leadCompanyName}}</td>
-                <td ng-if='referral.activeReferral'>{{referral.leadEmail}}</td>
-                <td ng-if='referral.activeReferral'>{{amountToDate}}</td>
-                <td ng-if='referral.activeReferral'>{{date}}</td>
-                <td ng-if='referral.activeReferral'>{{payout}}</td>
-                <td ng-if='referral.activeReferral'>{{referral.activeReferral?'Active':'InActive'}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.leadName}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.leadCompanyName}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.leadEmail}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.totalAmountPaidForReferral | currency}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{date}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.amountMadeTowardNextPayout | currency}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.activeReferral?'Active':'InActive'}}</td>
               </td>
             </tr>
         </tbody>

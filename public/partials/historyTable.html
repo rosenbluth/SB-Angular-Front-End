@@ -18,10 +18,12 @@
                 <td>{{referral.leadName}}</td>
                 <td>{{referral.leadCompanyName}}</td>
                 <td>{{referral.leadEmail}}</td>
-                <td>{{amountToDate}}</td>
+                <td ng-if="referral.activeReferral">{{referral.totalAmountPaidForReferral | currency}}</td>
+                <td ng-if="!referral.activeReferral">$0</td>
                 <td>{{date}}</td>
-                <td>{{referral.bonusAmount}}</td>
-                <td>{{referral.activeReferral?'Active':'InActive'}}</td>
+                <td ng-if="referral.activeReferral">{{referral.amountMadeTowardNextPayout | currency}}</td>
+                <td ng-if="!referral.activeReferral">$0</td>
+                <td>{{referral.activeReferral?'Active':'Inactive'}}</td>
             </tr>
         </tbody>
     </table>

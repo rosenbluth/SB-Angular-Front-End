@@ -14,11 +14,14 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', 'C
         $http.post('/api/partners/login', $scope.view.loginInfo)
         .then(function(response){ console.log(response, 'response from login.then');
             $window.localStorage.setItem('token', response.data.token);
-            if(response.data.email = 'sally@sally.com'){
+            if(response.data.email === 'sally@sally.com'){
+                console.log(response.data.email, 'if');
                 $location.path('/admin');
             }
             else{
+                console.log(response.data.email, 'else');
                 $location.path('/table');
+
             }
         });
 
