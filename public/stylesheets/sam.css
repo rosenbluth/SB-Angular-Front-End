@@ -381,3 +381,14 @@ ul.topnav span.icon {
 .red-test{
     border: 1px solid red
 }
+.top-margin{
+    margin-top: 45px;
+}
+.move-rightup{
+left:78vw;
+top: 5vh;
+}
+.bolded{
+    font-weight: bold;
+    margin-bottom: -5vh;
+}
