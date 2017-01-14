@@ -1,8 +1,4 @@
 <ng-include src="'partials/navbar.html'"></ng-include>
-
-
-
-
 <div>
     <button ng-click='view.convertedViewClick()' class="submitBtn btn waves-effect waves-light amber darken-2 move-rightup" type="" name="action">View Converted</button>
     <h4 class="center-align bolded">Non-Converted Referrals</h4>
@@ -21,11 +17,11 @@
         </thead>
         <tbody>
             <tr ng-repeat="referral in currentUser.data">
-                <td ng-if='!referral.starterConverted && !referral.growthConverted' >{{referral.leadName}}</td>
-                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadCompanyName}}</td>
-                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadEmail}}</td>
-                <td ng-if='!referral.starterConverted && !referral.growthConverted'>{{referral.leadPhone}}</td>
-                <td ng-if='!referral.starterConverted && !referral.growthConverted'>
+                <td ng-if='!referral.activeReferral' >{{referral.leadName}}</td>
+                <td ng-if='!referral.activeReferral'>{{referral.leadCompanyName}}</td>
+                <td ng-if='!referral.activeReferral'>{{referral.leadEmail}}</td>
+                <td ng-if='!referral.activeReferral'>{{referral.leadPhone}}</td>
+                <td ng-if='!referral.activeReferral'>
                     <form class='make-flex' ng-submit=convertClicked(referral)>
                         <p class="switch top-down">
                             <label class='need-margin-b'>

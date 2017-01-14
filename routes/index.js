@@ -203,6 +203,7 @@ router.post('/api/referrals', function(req, res) {
 
 
 router.post('/api/referrals/convert', function(req, res) {
+    console.log('hitting convert route');
     let referralToConvert = req.body;
     let momentDate = moment(new Date()).format('YYYY-MM-DD')
     if (referralToConvert.starterConverted) {

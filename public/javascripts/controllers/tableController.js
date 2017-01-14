@@ -31,13 +31,7 @@ app.controller('tableController', [
             $('select').material_select();
             console.log($scope.currentUser.data[referralIndex]);
             $http.post('/api/referrals/convert', $scope.currentUser.data[referralIndex]).then((response) => {
-                // var wholeReferral = $scope.currentUser.data[referralIndex];
-                // var todaysDate = moment(new Date('December 17, 1995 03:24:00') ).format('YYYY-MM-DD');
                 $scope.currentUser.data[referralIndex] = response.data;
-                // console.log($scope.currentUser.data[referralIndex].conversionDate, 'newDate');
-                // console.log(moment().from($scope.currentUser.data[referralIndex].conversionDate),"HEY HEY");
-                // console.log(typeof($scope.currentUser.data[referralIndex].conversionDate));
-
             })
         }
         // moment().from($scope.currentUser.data[referralIndex].conversionDate)
