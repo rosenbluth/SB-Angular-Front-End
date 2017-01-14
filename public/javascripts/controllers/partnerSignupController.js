@@ -12,13 +12,19 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
         event.preventDefault();
         $window.localStorage.setItem('email', $scope.view.partner.email);
         $http.post('/api/partners/signup',$scope.view.partner)
-        .then(function(response){
-            $window.localStorage.setItem('token', response.data.token)
-        })
-        .then(function(){
-            $location.path('/table')
-        })
-    }
+        .then(function(response){ console.log(response, 'response from login.then');
+        console.log(response,'response from dot then signup');
+            $window.localStorage.setItem('token', response.data.token);
+            if(response.data.email === 'sally@sally.com'){
+                console.log(response.data.email, 'if');
+                $location.path('/admin');
+            }
+            else{
+                console.log(response.data.email, 'else');
+                $location.path('/table');
 
+            }
+        });
+};
 
 }]);
