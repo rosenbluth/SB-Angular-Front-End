@@ -39,7 +39,6 @@ app.controller('tableController', [
                 // console.log(typeof($scope.currentUser.data[referralIndex].conversionDate));
 
             })
-
         }
         // moment().from($scope.currentUser.data[referralIndex].conversionDate)
 
@@ -132,6 +131,7 @@ app.controller('tableController', [
             }
 
             return ref;
+
         }
 
         // DONE DONE DONE DONE DONE if ryan clicks convert, this controller makes a new Date(), then makes a
