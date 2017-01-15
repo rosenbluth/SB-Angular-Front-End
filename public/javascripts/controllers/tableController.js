@@ -5,7 +5,9 @@ app.controller('tableController', [
     '$window',
     'CurrentPartner',
     'LogOutService',
-    function($scope, $http, $location, $window, CurrentPartner, LogOutService) {
+    '$anchorScroll',
+    function($scope, $http, $location, $window, CurrentPartner, LogOutService, $anchorScroll) {
+
 
         $scope.logout = LogOutService;
 
@@ -15,6 +17,7 @@ app.controller('tableController', [
         $scope.view.conversionTypes = ['starter', 'growth'];
         $scope.monthlyStarter = 49.9
         $scope.monthlyGrowth = 99.9
+
         $scope.view.nonConvertedClick = function() {
             $location.path('/admin/leads');
         }

@@ -448,5 +448,8 @@ nav{
     margin-bottom: 10vh;
 }
 .top-mar{
-    margin-top: 9vh;
+    margin-top: 75px;
+}
+.jump-to{
+    height: 40px;
 }
