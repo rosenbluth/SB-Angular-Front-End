@@ -1,8 +1,8 @@
 <ng-include src="'partials/navbar.html'"></ng-include>
-<div>
     <button ng-if='currentUser.admin' ng-click='view.nonConvertedClick()' class="submitBtn btn waves-effect waves-light amber darken-4 move-rightup" type="" name="action">View Non-Converted</button>
 
-<h4 class="center-align bolded">Referral Program History</h4>
+<div class='please' ng-class="{ 'top-mar' : !currentUser.admin }">
+    <h4 class="center-align bolded">Referral Program History</h4>
 </div>
 <div class="card bottom-margin">
     <table class="striped responsive-table">
