@@ -1,7 +1,7 @@
 body {
     font-family: roboto;
-    position: relative; padding-top: 40px;
-
+    position: relative;
+    padding-top: 40px;
 }
 
 .myContainer {
@@ -411,6 +411,8 @@ ul.topnav span.icon {
 .bold-mb{
     font-weight: bold;
     margin-bottom: 1vh;
+    margin-top: 7vh;
+
 }
 .make-flex{
     display: flex;
@@ -440,4 +442,8 @@ td,th {
 nav{
     z-index: 100;
      position: fixed; top: 0; left: 0;
+}
+.photo-card {
+    margin-top: -4vh;
+    margin-bottom: 10vh;
 }
