@@ -1,7 +1,9 @@
 body {
-    font-family: roboto;
+    /*font-family: roboto;*/
+    font-family: 'Titillium Web', sans-serif;
     position: relative;
     padding-top: 40px;
+
 }
 
 .myContainer {
@@ -409,7 +411,7 @@ ul.topnav span.icon {
     margin-bottom: -5vh;
 }
 .bold-mb{
-    font-weight: bold;
+    /*font-weight: bold;*/
     margin-bottom: 1vh;
     margin-top: 7vh;
 

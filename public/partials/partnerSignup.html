@@ -19,10 +19,11 @@
                             <input id='textarea1' ng-model="view.partner.lastName" placeholder="Last Name" type="text" />
                             <input id='textarea1' ng-model="view.partner.email" placeholder="E-mail Address" type="text" />
                             <input id='textarea1' ng-model="view.partner.phone" placeholder="Phone Number" type="text" />
-                            <input id='textarea1' ng-model="view.partner.stripe" placeholder="Stripe Account ID" type="text" onclick="Materialize.toast('Please enter your Stripe Account ID', 4000)" />
-                            <input id='textarea1' ng-model="view.partner.venmo" placeholder="Venmo Account ID" type="text" onclick="Materialize.toast( 'Please enter your Venmo email, phone, or username', 4000)" />
-                            <input id='textarea1' ng-model="view.partner.password" placeholder="Password" type="text" />
-                            <input id='textarea1' ng-model="view.partner.password" placeholder="Confirm Password" type="text" />
+                            <input id='textarea1' ng-model="view.partner.stripe" placeholder="Stripe Account ID" type="text" onfocus="Materialize.toast('Please enter your Stripe Account ID', 4000)" />
+                            <input id='textarea1' ng-model="view.partner.venmo" placeholder="Venmo Account ID" type="text" onfocus="Materialize.toast( 'Please enter your Venmo email, phone, or username', 4000)" />
+                            <input id='textarea1' ng-model="view.partner.password" placeholder="Password" type="password" />
+                            <input id='textarea1' ng-model="view.partner.passConf" placeholder="Confirm Password" type="password" />
+                            <h6 ng-if='view.errorInPass'>{{view.errorInPass}}</h6>
                             <div class="cardContentButtons">
                                 <button class="submitBtn btn waves-effect waves-light amber darken-4 top-hat" type="submit" name="action">Submit</button>
                             </div>

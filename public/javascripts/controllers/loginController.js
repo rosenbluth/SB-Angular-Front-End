@@ -6,12 +6,14 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', 'C
     $scope.view.loginInfo = {};
     $scope.view.loginInfo.leadEmail = $window.localStorage.getItem('leadEmail');
 
-
+    $scope.view.closeClicked = function(){
+        $location.path('/')
+    }
     $scope.view.loginClicked = function(event){
         event.preventDefault();
         console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
-        
+
         $http.post('/api/partners/login', $scope.view.loginInfo)
         .then(function(response){ console.log(response, 'response from login.then');
             $window.localStorage.setItem('token', response.data.token);

@@ -9,6 +9,7 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
     $scope.view.partner.leadEmail = $window.localStorage.getItem('leadEmail');
 
     $scope.view.submitPartner = function(event){
+        if($scope.view.partner.password === $scope.view.partner.passConf ){
         event.preventDefault();
         $window.localStorage.setItem('email', $scope.view.partner.email);
         $http.post('/api/partners/signup',$scope.view.partner)
@@ -25,6 +26,10 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
 
             }
         });
+    }else{
+        $scope.view.errorInPass = 'Your passwords do not match.'
+
+    }
 };
 
 }]);

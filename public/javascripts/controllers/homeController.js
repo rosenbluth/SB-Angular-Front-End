@@ -15,6 +15,8 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
 
 
     $scope.view.submitReferralClicked = function(event) {
+        var newRef = $scope.view.newReferral
+        if(newRef.leadName && newRef.leadCompanyName && newRef.leadEmail && newRef.leadPhone ){
         event.preventDefault();
         $scope.view.newReferral.conversionDate = new Date();
         // console.log('submitReferralClicked running');
@@ -25,6 +27,7 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
         }, function(err) {
             console.log(err, 'error from server');
         })
+    }
     };
 
 

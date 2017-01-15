@@ -12,11 +12,11 @@
 
                             </div>
                             <input ng-model="view.loginInfo.email" type="text" placeholder="email" id="textarea1">
-                            <input ng-model="view.loginInfo.password" type="text" placeholder="password" id="textarea1">
+                            <input ng-model="view.loginInfo.password" type="password" placeholder="password" id="textarea1">
 
                             <div class="row top-hat">
                                 <div class="loginButtons">
-                                    <div class="closeButtonLogin">
+                                    <div ng-click='view.closeClicked()' class="closeButtonLogin">
                                         <a class="submitBtn btn waves-effect waves-light wButton" type="" name="">Close</a>
 
                                     </div>

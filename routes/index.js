@@ -64,7 +64,7 @@ router.post('/api/partners/login', function(req, res) {
                         // console.log('there was a response from bcrypt');
                         var token = jwt.sign({
                             id: partnerReturned[0].id
-                        }, "booyah")
+                        }, (process.env.JWT_SECRET))
                         // res.json({token:token});
                         Referral.update({
                                 leadEmail: req.body.leadEmail
@@ -139,7 +139,7 @@ router.post('/api/partners/signup', function(req, res) {
                     console.log(partnerFullName, 'partnerFullName');
                     var token = jwt.sign({
                         id: partner.id
-                    }, "booyah")
+                    }, (process.env.JWT_SECRET))
                     Referral.update({
                             leadEmail: req.body.leadEmail
                         }, {
@@ -272,7 +272,7 @@ router.post('/api/referrals/convert', function(req, res) {
 router.get('/api/verify', function(req, res) {
     if (req.headers.authorization) {
         const token = req.headers.authorization.split(' ')[1];
-        const payload = jwt.verify(token, "booyah");
+        const payload = jwt.verify(token, (process.env.JWT_SECRET));
 
         Partner.find({
             _id: payload.id
