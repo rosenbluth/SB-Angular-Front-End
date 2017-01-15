@@ -44,6 +44,8 @@ router.post('/api/partners', function(req, res) {
 router.post('/api/partners/login', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
+    let partnerFullName;
+
     // console.log(req.body.leadEmail, 'req.body.leadEmail');
     // console.log(password, 'password');
     if (!email || !password) {
@@ -55,18 +57,22 @@ router.post('/api/partners/login', function(req, res) {
             // console.log(partnerReturned, 'partnerReturned');
             if (partnerReturned) {
                 // console.log('this person returned', partnerReturned[0]);
+                partnerFullName = partnerReturned[0].firstName + ' ' + partnerReturned[0].lastName;
+                console.log(partnerFullName, 'partnerFullName');
                 bcrypt.compare(password, partnerReturned[0].password, function(err, response) {
                     if (response) {
                         // console.log('there was a response from bcrypt');
                         var token = jwt.sign({
                             id: partnerReturned[0].id
-                        },  process.env.JWT_SECRET )
+                        }, "booyah")
                         // res.json({token:token});
                         Referral.update({
                                 leadEmail: req.body.leadEmail
                             }, {
                                 $set: {
-                                    referrerEmail: req.body.email
+                                    referrerEmail: req.body.email,
+                                    referrerName: partnerFullName
+
                                 }
                             },
                             function(err, returned) {
@@ -96,6 +102,7 @@ router.post('/api/partners/login', function(req, res) {
 router.post('/api/partners/signup', function(req, res) {
     // console.log( req.body, 'req.body from /signup post route' );
     let partner;
+    let partnerFullName;
     let errors = [];
     if (!req.body.email) {
         errors.push("Email can't be blank")
@@ -128,14 +135,17 @@ router.post('/api/partners/signup', function(req, res) {
                 newPartner.save(function(err, partnerInserted) {
                     // console.log(partnerInserted, 'partnerInserted');
                     partner = partnerInserted;
+                    partnerFullName = partnerInserted.firstName + ' ' + partner.lastName;
+                    console.log(partnerFullName, 'partnerFullName');
                     var token = jwt.sign({
                         id: partner.id
-                    }, process.env.JWT_SECRET )
+                    }, "booyah")
                     Referral.update({
                             leadEmail: req.body.leadEmail
                         }, {
                             $set: {
-                                referrerEmail: partner.email
+                                referrerEmail: partner.email,
+                                referrerName: partnerFullName
                             }
                         },
                         function(err, returned) {
@@ -262,7 +272,7 @@ router.post('/api/referrals/convert', function(req, res) {
 router.get('/api/verify', function(req, res) {
     if (req.headers.authorization) {
         const token = req.headers.authorization.split(' ')[1];
-        const payload = jwt.verify(token,  process.env.JWT_SECRET  );
+        const payload = jwt.verify(token, "booyah");
 
         Partner.find({
             _id: payload.id

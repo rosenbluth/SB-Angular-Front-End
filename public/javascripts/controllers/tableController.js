@@ -27,7 +27,7 @@ app.controller('tableController', [
         }
 
         $scope.convertClicked = function(referral) {
-            confirm('You are about to convert a referral to active payout. Are you sure?')
+            // confirm('You are about to convert a referral to active payout. Are you sure?')
             var referralIndex = this.$index;
 
             console.log(referral, 'referral argument');

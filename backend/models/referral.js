@@ -34,6 +34,9 @@ var ReferralSchema = new Schema({
         type: String
     },
 
+    referrerName:{
+        type: String
+    },
     growthConverted: {
         type: Boolean
     },

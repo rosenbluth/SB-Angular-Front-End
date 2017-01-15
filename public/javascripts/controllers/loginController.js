@@ -11,6 +11,7 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', 'C
         event.preventDefault();
         console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
+        
         $http.post('/api/partners/login', $scope.view.loginInfo)
         .then(function(response){ console.log(response, 'response from login.then');
             $window.localStorage.setItem('token', response.data.token);
