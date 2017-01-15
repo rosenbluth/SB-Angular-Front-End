@@ -1,5 +1,7 @@
 body {
-    font-family: roboto
+    font-family: roboto;
+    position: relative; padding-top: 40px;
+
 }
 
 .myContainer {
@@ -433,5 +435,9 @@ td,th {
 }
 .lil-top{
     margin-top: 15px;
-    margin-left: 100px;
+    margin-left: 80px;
+}
+nav{
+    z-index: 100;
+     position: fixed; top: 0; left: 0;
 }
