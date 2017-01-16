@@ -18,28 +18,28 @@ mongoose.Promise = Promise;
 var url = process.env.MONGOLAB_URI;
 
 // var url = process.env.URL;
-mongoose.connect(url);
-
-mongoose.connection.once('open', () =>{
-    console.log('working, yo');
-})
-
-// var mongodb = require('mongodb');
-// var MongoClient = mongodb.MongoClient;
-// // var url = 'mongodb://localhost:27017/sandboxreferrals';
-// var url = process.env.MONGOLAB_URI;
-// MongoClient.connect(url, function (err, db) {
-//  if (err) {
-//    console.log('Unable to connect to the mongoDB server. Error:', err);
-//  } else {
-//    console.log('Connection established to', url);
+// mongoose.connect(url);
 //
-//    // do some work here with the database.
-//
-//    //Close connection
-//    db.close();
-//  }
-// });
+// mongoose.connection.once('open', () =>{
+//     console.log('working, yo');
+// })
+
+var mongodb = require('mongodb');
+var MongoClient = mongodb.MongoClient;
+// var url = 'mongodb://localhost:27017/sandboxreferrals';
+var url = process.env.MONGOLAB_URI;
+MongoClient.connect(url, function (err, db) {
+ if (err) {
+   console.log('Unable to connect to the mongoDB server. Error:', err);
+ } else {
+   console.log('Connection established to', url);
+
+   // do some work here with the database.
+
+   //Close connection
+   db.close();
+ }
+});
 
 app.use(bodyParser.urlencoded({
     extended: false
