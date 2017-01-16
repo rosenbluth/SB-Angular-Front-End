@@ -139,9 +139,7 @@ body {
     color: white;
 }
 
-.striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
-    background-color: #e0e0e0;
-}
+
 
 
 button:focus {
@@ -496,4 +494,7 @@ nav{
 }
 .pad-btm-less{
     padding-bottom: -200px;
+}
+.striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
+    background-color: #e0e0e0;
 }
