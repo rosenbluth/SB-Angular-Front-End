@@ -15,9 +15,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 // Connection URL
-// var url = process.env.MONGODB_URI;
+var url = process.env.MONGODB_URI;
 // var url = process.env.MONGOLAB_URI;
-var url = 'mongodb://admin:admin@ds111529.mlab.com:11529/heroku_4s7qc68b';
+// var url = 'mongodb://admin:admin@ds111529.mlab.com:11529/heroku_4s7qc68b';
 
 // var url = process.env.URL;
 // mongoose.connect(url);
@@ -28,18 +28,18 @@ var url = 'mongodb://admin:admin@ds111529.mlab.com:11529/heroku_4s7qc68b';
 
 
 //
-var MongoClient = require('mongodb').MongoClient
-  , assert = require('assert');
-
-// Connection URL
-// var url = 'mongodb://localhost:27017/myproject';
-
-// Use connect method to connect to the server
-MongoClient.connect(url, function(err, db) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-  db.close();
-});
+// var MongoClient = require('mongodb').MongoClient
+//   , assert = require('assert');
+//
+// // Connection URL
+// // var url = 'mongodb://localhost:27017/myproject';
+//
+// // Use connect method to connect to the server
+// MongoClient.connect(url, function(err, db) {
+//   assert.equal(null, err);
+//   console.log("Connected successfully to server");
+//   db.close();
+// });
 
 
 
