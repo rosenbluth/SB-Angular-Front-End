@@ -142,6 +142,9 @@ body {
 .striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
     background-color: #e0e0e0;
 }
+.striped>tbody>tr:nth-child(even)>td, .striped>tbody>tr:nth-child(even)>th {
+    background-color: #c1c1c1;
+}
 
 button:focus {
     outline: none;
