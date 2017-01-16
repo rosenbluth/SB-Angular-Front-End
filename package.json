@@ -5,9 +5,7 @@
   "scripts": {
     "start": "nodemon app.js"
   },
-  "engines": {
-    "node": "DEV_VERSION"
-  },
+
   "dependencies": {
     "angular-material-sidemenu": "^1.0.2",
     "bcrypt": "^0.8.7",
