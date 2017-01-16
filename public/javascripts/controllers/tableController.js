@@ -45,7 +45,7 @@ app.controller('tableController', [
             } else {
                 $http.get('/api/partners/' + $scope.currentUser.email + '/referrals').then(function(response) {
                     $scope.currentUser.data = response.data[1]; //array of referrals for this partner
-                    $scope.currentUser.data.forEach(makeCalculations);                });
+                    $scope.currentUser.data.forEach(makeCalculations);                 });
             }
         })
 
