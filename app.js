@@ -17,7 +17,7 @@ mongoose.Promise = Promise;
 // Connection URL
 var url = process.env.MONGOLAB_URI;
 
-var url = process.env.URL;
+// var url = process.env.URL;
 mongoose.connect(url);
 
 mongoose.connection.once('open', () =>{
