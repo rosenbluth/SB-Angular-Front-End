@@ -139,7 +139,7 @@ body {
     color: white;
 }
 
-.striped>tbody>tr:nth-child(even)>td, .striped>tbody>tr:nth-child(even)>th {
+.striped>tbody>tr:nth-child(odd)>td, .striped>tbody>tr:nth-child(odd)>th {
     background-color: #e0e0e0;
 }
 
