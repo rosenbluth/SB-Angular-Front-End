@@ -24,7 +24,7 @@
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.leadCompanyName}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.leadEmail}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.totalAmountPaidForReferral | currency}}</td>
-                <td ng-if='referral.starterConverted || referral.growthConverted'>{{date}}</td>
+                <td ng-if='referral.starterConverted || referral.growthConverted'>{{date}}, {{year}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.amountMadeTowardNextPayout | currency}}</td>
                 <td ng-if='referral.starterConverted || referral.growthConverted'>{{referral.activeReferral?'Active':'InActive'}}</td>
 
