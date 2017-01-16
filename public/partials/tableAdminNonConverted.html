@@ -13,6 +13,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Referring Party</th>
+                <th>Date Referred</th>
                 <!-- <th>Converted?</th> -->
             </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td ng-if='!referral.activeReferral'>{{referral.leadEmail}}</td>
                 <td ng-if='!referral.activeReferral'>{{referral.leadPhone}}</td>
                 <td ng-if='!referral.activeReferral'>{{referral.referrerEmail}}</td>
+                <td ng-if='!referral.activeReferral'>{{referral.timeStamp | date: 'longDate'}}</td>
                 <td ng-if='!referral.activeReferral'>
                     <form class='make-flex' ng-submit=convertClicked(referral)>
                         <p class="switch top-down">
