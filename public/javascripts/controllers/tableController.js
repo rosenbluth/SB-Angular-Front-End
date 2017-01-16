@@ -39,7 +39,7 @@ app.controller('tableController', [
 
         CurrentPartner().then(function(partnerReturned) {
             $scope.currentUser = partnerReturned;
-            if ($scope.currentUser.email === "sally@sally.com") {
+            if ($scope.currentUser.email === "g33ks@galvanize.com") {
                 $scope.currentUser.admin = true
                 $http.get('/api/referrals').then(function(response) {
                     // console.log(response.data, 'response.data admin');
