@@ -25,22 +25,43 @@ var url = process.env.MONGOLAB_URI;
 //     console.log('working, yo');
 // })
 
-var mongodb = require('mongodb');
-var MongoClient = mongodb.MongoClient;
-// var url = 'mongodb://localhost:27017/sandboxreferrals';
-// var url = process.env.MONGOLAB_URI;
-MongoClient.connect(url, function (err, db) {
- if (err) {
-   console.log('Unable to connect to the mongoDB server. Error:', err);
- } else {
-   console.log('Connection established to', url);
 
-   // do some work here with the database.
 
-   //Close connection
-   db.close();
- }
+var MongoClient = require('mongodb').MongoClient
+  , assert = require('assert');
+
+// Connection URL
+// var url = 'mongodb://localhost:27017/myproject';
+
+// Use connect method to connect to the server
+MongoClient.connect(url, function(err, db) {
+  assert.equal(null, err);
+  console.log("Connected successfully to server");
+  db.close();
 });
+
+
+
+
+
+
+
+// var MongoClient = mongodb.MongoClient,
+//   assert = require('assert');
+// // var url = 'mongodb://localhost:27017/sandboxreferrals';
+// // var url = process.env.MONGOLAB_URI;
+// MongoClient.connect(url, function (err, db) {
+//  if (err) {
+//    console.log('Unable to connect to the mongoDB server. Error:', err);
+//  } else {
+//    console.log('Connection established to', url);
+//
+//    // do some work here with the database.
+//
+//    //Close connection
+//    db.close();
+//  }
+// });
 
 app.use(bodyParser.urlencoded({
     extended: false
