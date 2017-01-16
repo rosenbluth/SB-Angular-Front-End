@@ -11,6 +11,7 @@
                 <th>Name</th>
                 <th>Company</th>
                 <th>Email</th>
+                <th>Conversion Date</th>
                 <th>Amount to Date</th>
                 <th>Next Payout Date</th>
                 <th>Next Payout</th>
@@ -22,9 +23,11 @@
                 <td>{{referral.leadName}}</td>
                 <td>{{referral.leadCompanyName}}</td>
                 <td>{{referral.leadEmail}}</td>
+                <td ng-if="referral.conversionDate">{{referral.conversionDate | date:'mediumDate'}}  </td>
+                <td ng-if="!referral.conversionDate">N/A</td>
                 <td ng-if="referral.activeReferral">{{referral.totalAmountPaidForReferral | currency}}</td>
                 <td ng-if="!referral.activeReferral">$0</td>
-                <td>{{date}}</td>
+                <td>{{date}}, {{year}}</td>
                 <td ng-if="referral.activeReferral">{{referral.amountMadeTowardNextPayout | currency}}</td>
                 <td ng-if="!referral.activeReferral">$0</td>
                 <td>{{referral.activeReferral?'Active':'Inactive'}}</td>
