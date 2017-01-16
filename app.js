@@ -19,12 +19,12 @@ var url = process.env.MONGODB_URI;
 // var url = process.env.MONGOLAB_URI;
 // var url = 'mongodb://admin:admin@ds111529.mlab.com:11529/heroku_4s7qc68b';
 
-// var url = process.env.URL;
-// mongoose.connect(url);
-//
-// mongoose.connection.once('open', () =>{
-//     console.log('working, yo');
-// })
+var url = process.env.URL;
+mongoose.connect(url);
+
+mongoose.connection.once('open', () =>{
+    console.log('working, yo');
+})
 
 
 //
