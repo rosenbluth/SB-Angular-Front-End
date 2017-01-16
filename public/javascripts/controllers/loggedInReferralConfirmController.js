@@ -7,7 +7,7 @@ app.controller('loggedInReferralConfirmController', ['$scope', '$http', '$locati
     $scope.view.closeClicked = function(event){
         event.preventDefault();
         $location.path('/table')
-        if($window.localStorage.email === 'sally@sally.com'){
+        if($window.localStorage.email === 'g33ks@galvanize.com'){
             $location.path('/admin/leads');
         }
         else{

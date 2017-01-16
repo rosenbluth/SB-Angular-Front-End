@@ -16,7 +16,7 @@ app.controller('partnerSignupController', ['$scope', '$http', '$location', '$win
         .then(function(response){ console.log(response, 'response from login.then');
         console.log(response,'response from dot then signup');
             $window.localStorage.setItem('token', response.data.token);
-            if(response.data.email === 'sally@sally.com'){
+            if(response.data.email === 'g33ks@galvanize.com'){
                 console.log(response.data.email, 'if');
                 $location.path('/admin');
             }
