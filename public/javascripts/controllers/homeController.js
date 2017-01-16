@@ -5,14 +5,6 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
     $scope.view.booyah = 'booyah from home controller';
 
     $scope.view.newReferral = {};
-    // $scope.view.newReferral.resultedInConversion = false;
-    // $scope.view.newReferral.totalAmountPaidForReferral = 0;
-    // $scope.view.newReferral.totalMoneyYearlyStarter = 598.8;
-    // $scope.view.newReferral.totalMoneyYearlyGrowth = 1198.80
-    // $scope.view.newReferral.numMonthsPassedConverted = 0;
-    // $scope.view.newReferral.totalNumOfQuarterlyPayouts = 0;
-    // $scope.view.newReferral.activeReferral = true;
-
 
     $scope.view.submitReferralClicked = function(event) {
         var newRef = $scope.view.newReferral
@@ -25,7 +17,7 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
         $http.post('/api/referrals', $scope.view.newReferral).then(function() {
             $location.path('/confirmation')
         }, function(err) {
-            console.log(err, 'error from server');
+            // console.log(err, 'error from server');
         })
     }
     };
@@ -43,7 +35,7 @@ app.controller('homeController', ['$scope', '$http', '$location', 'Partner', '$w
         Partner.get().then(function(partners) {
             console.log(partners);
             $scope.partners = partners;
-            console.log(partners);
+            // console.log(partners);
         })
     }
 

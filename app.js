@@ -15,6 +15,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
 // Connection URL
+// var url = process.env.MONGODB_URI;
 var url = process.env.MONGOLAB_URI;
 
 // var url = process.env.URL;

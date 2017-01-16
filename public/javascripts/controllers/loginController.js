@@ -11,18 +11,15 @@ app.controller('loginController', ['$scope', '$http', '$location', '$window', 'C
     }
     $scope.view.loginClicked = function(event){
         event.preventDefault();
-        console.log($scope.view.loginInfo);
         $window.localStorage.setItem('email', $scope.view.loginInfo.email);
 
         $http.post('/api/partners/login', $scope.view.loginInfo)
         .then(function(response){ console.log(response, 'response from login.then');
             $window.localStorage.setItem('token', response.data.token);
             if(response.data.email === 'g33ks@galvanize.com'){
-                console.log(response.data.email, 'if');
                 $location.path('/admin');
             }
             else{
-                console.log(response.data.email, 'else');
                 $location.path('/table');
 
             }

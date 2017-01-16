@@ -28,10 +28,7 @@ app.controller('tableController', [
 
         $scope.convertClicked = function(referral) {
             var referralIndex = this.$index;
-
-            console.log(referral, 'referral argument');
             $('select').material_select();
-            console.log($scope.currentUser.data[referralIndex]);
             $http.post('/api/referrals/convert', $scope.currentUser.data[referralIndex]).then((response) => {
                 $scope.currentUser.data[referralIndex] = response.data;
             })
@@ -42,18 +39,11 @@ app.controller('tableController', [
             if ($scope.currentUser.email === "g33ks@galvanize.com") {
                 $scope.currentUser.admin = true
                 $http.get('/api/referrals').then(function(response) {
-                    // console.log(response.data, 'response.data admin');
                     $scope.currentUser.data = response.data;
-                    console.log($scope.currentUser.data);
                     $scope.currentUser.data.forEach(makeCalculations);
-                    console.log($scope.currentUser.data[0], 'show me good stuff');
                 })
             } else {
                 $http.get('/api/partners/' + $scope.currentUser.email + '/referrals').then(function(response) {
-                    //need to plug these values in to table
-                    console.log(response.data, 'res.data');
-                    console.log(response.data[1], 'response from table cont');
-                    console.log(response.data[0], 'partner from table cont');
                     $scope.currentUser.data = response.data[1]; //array of referrals for this partner
                     $scope.currentUser.data.forEach(makeCalculations);                });
             }

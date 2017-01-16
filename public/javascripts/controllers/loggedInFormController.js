@@ -12,10 +12,8 @@ app.controller('loggedInFormController', ['$scope', '$http', '$location', '$wind
         event.preventDefault();
         $scope.view.newReferral.conversionDate = new Date();
         $http.post('/api/referrals', $scope.view.newReferral).then(function(response) {
-            console.log(response, 'response dot then logged in form controller');
             $location.path('/referralconfirm')
         }, function(err) {
-            console.log(err, 'error from server');
         })
     };
 }]);

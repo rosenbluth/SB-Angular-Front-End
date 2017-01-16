@@ -19,9 +19,7 @@ router.get('/api/partners', function(req, res) {
     Partner.find().then(function(err, partners) {
         if (err) {
             res.send(err);
-            // console.log(err);
         } else {
-            // console.log(partners + "FROM ROUTE");
             res.send(partners);
         }
     })
@@ -31,7 +29,6 @@ router.get('/api/partners', function(req, res) {
 
 router.post('/api/partners', function(req, res) {
     let partner = req.body;
-    // console.log(partner, 'newPartner from api');
     let newPartner = new Partner(partner);
     newPartner.save(function(partnerInserted) {
         res.json(partnerInserted)
@@ -45,45 +42,34 @@ router.post('/api/partners/login', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
     let partnerFullName;
-
-    // console.log(req.body.leadEmail, 'req.body.leadEmail');
-    // console.log(password, 'password');
     if (!email || !password) {
         res.send('email or password cannot be empty');
     } else {
         Partner.find({
             "email": email
         }).then(function(partnerReturned) {
-            // console.log(partnerReturned, 'partnerReturned');
             if (partnerReturned) {
-                // console.log('this person returned', partnerReturned[0]);
                 partnerFullName = partnerReturned[0].firstName + ' ' + partnerReturned[0].lastName;
-                console.log(partnerFullName, 'partnerFullName');
                 bcrypt.compare(password, partnerReturned[0].password, function(err, response) {
                     if (response) {
-                        // console.log('there was a response from bcrypt');
                         var token = jwt.sign({
                             id: partnerReturned[0].id
                         }, (process.env.JWT_SECRET))
-                        // res.json({token:token});
                         Referral.update({
                                 leadEmail: req.body.leadEmail
                             }, {
                                 $set: {
                                     referrerEmail: req.body.email,
                                     referrerName: partnerFullName
-
                                 }
                             },
                             function(err, returned) {
-                                // console.log(returned, 'returned referral from login route');
                                 res.json({
                                     email: req.body.email,
                                     token: token
                                 })
                             })
                     } else {
-                        // console.log('wrong email or password');
                         res.send('wrong email or password')
                     }
                 })
@@ -100,7 +86,6 @@ router.post('/api/partners/login', function(req, res) {
 
 //create a new user account and issue a token
 router.post('/api/partners/signup', function(req, res) {
-    // console.log( req.body, 'req.body from /signup post route' );
     let partner;
     let partnerFullName;
     let errors = [];
@@ -120,7 +105,6 @@ router.post('/api/partners/signup', function(req, res) {
             email: req.body.email
         }, function(err, result) {
             if (!result) {
-                // console.log('inelse');
                 var saltRounds = 4;
                 var passwordHash = bcrypt.hashSync(req.body.password, saltRounds);
                 const newPartner = new Partner({
@@ -133,7 +117,6 @@ router.post('/api/partners/signup', function(req, res) {
                     password: passwordHash
                 });
                 newPartner.save(function(err, partnerInserted) {
-                    // console.log(partnerInserted, 'partnerInserted');
                     partner = partnerInserted;
                     partnerFullName = partnerInserted.firstName + ' ' + partner.lastName;
                     console.log(partnerFullName, 'partnerFullName');
@@ -171,23 +154,21 @@ router.get('/api/partners/:partner_email/referrals', function(req, res, next) {
     let partnerEmail = req.params.partner_email;
     let referrals = [];
     let allPartnerReferralInfo = [];
-    // console.log(partnerEmail, 'partner email');
     Partner.find({
         email: partnerEmail
     }).then(function(returnedPartner) {
-        // console.log(returnedPartner, 'returnedPartner');
         allPartnerReferralInfo.push(returnedPartner[0])
             .then(Referral.find({
                 referrerEmail: partnerEmail
             }).then(function(referralsReturned) {
-                // console.log(referralsReturned, 'referralsReturned');
                 allPartnerReferralInfo.push(referralsReturned);
-                // console.log(allPartnerReferralInfo, 'allPartnerReferralInfo');
                 res.send(allPartnerReferralInfo)
             }))
     })
 })
 // ************** end partners **************
+
+
 // ************** referrals **************
 //get all referrals--admin
 router.get('/api/referrals', function(req, res) {
@@ -199,15 +180,13 @@ router.get('/api/referrals', function(req, res) {
         }
     })
 });
+
+
 router.post('/api/referrals', function(req, res) {
     let referral = req.body;
-    // console.log(referral, 'req.body referral from post route');
     let newReferral = new Referral(referral);
     newReferral.save(function(err, newReferral) {
-        // console.log(err, 'error');
-        // console.log(newReferral, 'newReferral');
         res.json(newReferral)
-        //    res.end();
     });
 });
 
@@ -258,16 +237,14 @@ router.post('/api/referrals/convert', function(req, res) {
             },
             function(err, returned) {
                 console.log(returned, 'callback returned referral after growthConverted converted switched to true');
-                // console.log(err, 'err switched');
-                // console.log(momentDate, 'momentDate');
                 res.send(returned)
             });
     }
-    // else{
-    //     res.status(500).json({error: 'No referral converted.'})
-    // }
 })
 // ************** end referrals **************
+
+
+
 // ************** token auth **************
 router.get('/api/verify', function(req, res) {
     if (req.headers.authorization) {
