@@ -8,7 +8,7 @@ var PartnerSchema = require('../backend/models/partner.js');
 const Partner = mongoose.model('Partner', PartnerSchema);
 const Referral = mongoose.model('Referral', ReferralSchema);
 
-
+  
 mongoose.Promise = global.Promise;
 
 // module.exports = function seedPartners(){
@@ -44,7 +44,6 @@ mongoose.Promise = global.Promise;
 //                 };
 //                 partners.push(newPerson);
 //             }
-//             console.log(partners);
 //             partners.forEach(function(person){
 //                 let newbie = new Partner(person)
 //                 // console.log(newbie, 'newbie');
