@@ -54,4 +54,4 @@ The website is usable on devices of all sizes, and improvements are constantly b
 
 
 ---|---
-[Jeannie Yamakawa ](https://github.com/JeannieYamakawa) |[Sam Rosenbluth](https://github.com/rosenbluth) |[Frank Gonzalez](https://github.com/Fgonzalez512)
+[Jeannie Yamakawa - Fullstack](https://github.com/JeannieYamakawa) |[Sam Rosenbluth - Frontend](https://github.com/rosenbluth) |[Frank Gonzalez - Fullstack](https://github.com/Fgonzalez512)
