@@ -10,7 +10,7 @@
 
 
 ## Production
-You can test the production site at   https://sandboxcommerce.com
+You can test the production site at www.sandboxcommerce.com
 
 
 ## Site
